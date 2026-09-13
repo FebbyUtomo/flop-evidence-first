@@ -8,7 +8,7 @@
 
 **4/** The replacement gate is offline and publication-fail-closed. It checks source URL structure and local artifact hashes, rejects common sensitive content, and never grants publication approval. It contains no signing or network publication path; factual review stays human/independent.
 
-**5/** Transparent local-audit report and public-safe code: [INSERT REVIEWED PUBLIC URL]
+**5/** Transparent local-audit report and public-safe code: https://github.com/FebbyUtomo/flop-evidence-first
 
 Declared publication DID: `did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm`
 

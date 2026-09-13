@@ -7,7 +7,7 @@
 Technocore/Kibble at Scale: A Transparent 50,000-Identity and 187,389-Local-Record Experiment
 
 **Contribution URL**
-[INSERT REVIEWED PUBLIC URL]
+https://github.com/FebbyUtomo/flop-evidence-first
 
 **Technocore sequence**
 [INSERT VERIFIED SEQUENCE AFTER SIGNED ANNOUNCEMENT]

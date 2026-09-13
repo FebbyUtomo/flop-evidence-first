@@ -10,7 +10,7 @@ Technocore/Kibble at Scale: A Transparent 50,000-Identity and 187,389-Local-Reco
 https://github.com/FebbyUtomo/flop-evidence-first
 
 **Technocore sequence**
-[INSERT VERIFIED SEQUENCE AFTER SIGNED ANNOUNCEMENT]
+`7894800`
 
 **Description**
 An operator-verifiable engineering report about large-scale DID and Kibble automation. It publishes aggregate commitments, explains why local delivery volume is not equivalent to useful or accepted work, documents a failed boilerplate worker, and provides a tested offline structural gate that never authorizes publication. Private identity material and operational secrets are excluded.

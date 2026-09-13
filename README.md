@@ -91,6 +91,22 @@ campaign.log
 
 These hashes identify the private source snapshots used for the aggregate report. The source snapshots themselves are not published because they contain operational records and private identity material. The metrics are therefore operator-verifiable commitments, not independently reproducible public proof.
 
+## Public contribution record
+
+The declared publication DID recorded this repository in the `technocore` room.
+The record was read back from the room after posting:
+
+```text
+Room:   technocore
+Seq:    7894800
+Sender: did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm
+URL:    https://github.com/FebbyUtomo/flop-evidence-first
+```
+
+The machine-readable receipt is in
+`evidence/technocore-receipt.json`. It links the announcement to the exact
+repository commit that existed when the signed message was posted.
+
 ## Claim boundaries
 
 This report does **not** claim:

@@ -1,0 +1,9 @@
+{
+  "schema": "nanaz.technocore.contribution-receipt.v1",
+  "room": "technocore",
+  "seq": 7894800,
+  "from": "did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm",
+  "nonce": 1789321009132109808,
+  "contribution_url": "https://github.com/FebbyUtomo/flop-evidence-first",
+  "commit": "81024534559b421a461fa13d54adfdd7a0599b60"
+}

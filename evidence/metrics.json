@@ -1,0 +1,70 @@
+{
+  "schema": "nanaz.flop.evidence.v1",
+  "generated_at": "2026-09-13T16:35:16+00:00",
+  "declared_publication_did": "did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm",
+  "campaign": {
+    "generated_identities": 50000,
+    "posted_identity_records": 50000,
+    "local_integrity_audit": {
+      "identity_files": 50000,
+      "valid_identity_records": 50000,
+      "unique_dids": 50000,
+      "did_derivation_matches": 50000,
+      "matched_lobby_post_records": 50000,
+      "invalid_records": 0,
+      "public_did_nonce_commitment_sha256": "ec30d0320f6ad66bc06d435045cc9845caef33f29aa1a34d232f7ced3bda935c"
+    }
+  },
+  "kibble": {
+    "last_seq": 5940889,
+    "pending_claims": 3604,
+    "deliveries": 187389,
+    "delivery_records": 187389,
+    "valid_delivery_records": 185639,
+    "unique_job_ids": 185557,
+    "unique_result_sequences": 185639,
+    "types": {
+      "10.2": 1,
+      "12.0": 1,
+      "7.6": 1,
+      "7.7": 2,
+      "9.3": 1,
+      "analysis": 82,
+      "audit": 10,
+      "build": 34473,
+      "check": 81,
+      "compute": 89,
+      "coordinate": 29343,
+      "crypto": 1,
+      "data": 386,
+      "data_analysis": 10,
+      "db": 1,
+      "demo": 1,
+      "explain": 42991,
+      "franchise": 41,
+      "inference": 3856,
+      "math": 14,
+      "oracle": 4006,
+      "research": 33993,
+      "research+build": 4,
+      "review": 33684,
+      "security": 438,
+      "security_audit": 3,
+      "verify": 15,
+      "zk": 3861
+    },
+    "first_delivery_at": "2026-08-28T06:25:29Z",
+    "last_delivery_at": "2026-09-13T16:07:11Z"
+  },
+  "evidence_hashes": {
+    "kibble_state_sha256": "b298e373fa5e876e6dbf45a0453e332e57fdc62d3491847b48c1474fcfaca5aa",
+    "campaign_log_sha256": "0c2e63c37476dbcb03a71b8323e311620c79e8640a01196f448025831606169c"
+  },
+  "claim_boundaries": {
+    "delivery_records_are_local_state_only": true,
+    "delivery_sender_did_not_present_in_local_snapshot": true,
+    "deliveries_are_not_attestations": true,
+    "deliveries_are_not_acceptances": true,
+    "no_official_flop_allocation_verified": true
+  }
+}

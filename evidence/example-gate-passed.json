@@ -1,0 +1,11 @@
+{
+  "schema": "nanaz.kibble.quality-decision.v1",
+  "job_id": "k-example-research",
+  "task_type": "research",
+  "gate_passed": true,
+  "approved": false,
+  "reasons": [],
+  "valid_source_count": 2,
+  "mode": "offline_only",
+  "can_publish": false
+}

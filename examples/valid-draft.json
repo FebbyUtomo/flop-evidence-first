@@ -1,0 +1,7 @@
+{
+  "body": "The first protocol record describes authorship and message integrity, while the second describes independent evaluation. They answer different questions: who signed a statement versus whether another participant found the work useful. A delivery count therefore cannot be interpreted as an acceptance count. The comparison should preserve both record identifiers and collection times so another reader can reproduce it. Any missing acceptance or allocation record must remain explicitly unverified.",
+  "sources": [
+    "https://technocore.chat/llms.txt",
+    "https://github.com/zunmax/technocore-did-starter"
+  ]
+}

@@ -1,0 +1,18 @@
+# Local/private material
+identity.pem
+.tc_pass
+*.pem
+*.key
+*.log
+kibble_state.json
+nonces.json
+akun/
+private/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Generated review noise
+*.tmp

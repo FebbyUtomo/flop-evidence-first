@@ -1,0 +1,69 @@
+{
+  "schema": "nanaz.flop-roadmap.v1",
+  "updated_at": "2026-09-21",
+  "score": 15,
+  "target": 100,
+  "daily_target_points": 5,
+  "allocation_status": "UNVERIFIED",
+  "workstreams": [
+    {"id": "evidence", "weight": 20, "score": 10},
+    {"id": "flagship_tooling", "weight": 20, "score": 5},
+    {"id": "independent_validation", "weight": 20, "score": 0},
+    {"id": "community", "weight": 15, "score": 0},
+    {"id": "flipt_case_study", "weight": 15, "score": 0},
+    {"id": "official_readiness", "weight": 10, "score": 0}
+  ],
+  "completed_tranches": [
+    {
+      "id": "evidence_report_v1",
+      "title": "Claim-boundary report and metrics",
+      "workstream": "evidence",
+      "date": "2026-09-14",
+      "points": 5,
+      "artifacts": [
+        {"path": "README.md", "sha256": "56cbb3ede789bcad1b5f0e044d5595909fbb04b320cb7c064cf29740f8f5d4b5"},
+        {"path": "evidence/metrics.json", "sha256": "05a0d1346f14ead8141d14591befc5d0bbfa5beb6239fe64097354f893fdedf6"}
+      ],
+      "status": "verified",
+      "evidence": "Published claim-boundary report and machine-readable aggregate metrics with explicit non-allocation language."
+    },
+    {
+      "id": "deterministic_analyzer_v1",
+      "title": "Deterministic analyzer",
+      "workstream": "evidence",
+      "date": "2026-09-14",
+      "points": 5,
+      "artifacts": [
+        {"path": "analyze.py", "sha256": "b8004fb8487793f36a4847ece200ab2db5af0e078a8cbdb3439b71064e2d7444"},
+        {"path": "tests/test_analyze.py", "sha256": "ac89b5dbc7fa3fdbb472456847a09199661213815f3a9717819ba9f86d36a74f"}
+      ],
+      "status": "verified",
+      "evidence": "Deterministic analyzer and unit tests cover DID derivation, aggregate state, and public-output privacy boundaries."
+    },
+    {
+      "id": "offline_quality_gate_v1",
+      "title": "Offline quality gate",
+      "workstream": "flagship_tooling",
+      "date": "2026-09-14",
+      "points": 5,
+      "artifacts": [
+        {"path": "quality_worker.py", "sha256": "e54b4750f0202a2c70d25a8efa9136fe0f890fb643c41ffb22a288f7064f8d7e"},
+        {"path": "tests/test_quality_worker.py", "sha256": "d78bd0b45dd155d7663ffb29ce0f48ed9ed8bba566213cc0ae7bf34cf60eb814"}
+      ],
+      "status": "verified",
+      "evidence": "Offline fail-closed quality gate and tests reject boilerplate, credential shapes, and unsupported publication claims."
+    }
+  ],
+  "pending_tranches": [
+    {
+      "id": "flipt_case_study_v1",
+      "title": "Flipt lifecycle case study",
+      "workstream": "flipt_case_study",
+      "date": "2026-09-21",
+      "points": 5,
+      "artifact": "FLOP_FLIPT_CASE_STUDY.md",
+      "status": "pending",
+      "blocker": "Needs public-safe receipt fixtures or independently checkable evidence before scoring or publication."
+    }
+  ]
+}

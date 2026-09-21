@@ -130,6 +130,15 @@ Run the quality-gated worker in offline mode for seven days and compare:
 
 The success metric is no longer volume. It is the proportion of stranger-verifiable work that survives independent review.
 
+## Ongoing evidence roadmap
+
+- [`ROADMAP.md`](ROADMAP.md) defines the 100-point, evidence-only progress model.
+- [`FLOP_FLIPT_CASE_STUDY.md`](FLOP_FLIPT_CASE_STUDY.md) records the public-safe Flipt Phase Ø lifecycle findings.
+- `evidence/progress.json` is the machine-readable scorecard.
+- Validate score integrity with `python3 scripts/verify_roadmap.py`.
+
+The roadmap score measures completed artifacts, not FLOP eligibility or allocation. Official allocation remains `UNVERIFIED` until an authoritative receipt exists.
+
 ## License
 
 Report text and public-safe analysis code: CC BY 4.0 / MIT respectively. Raw private identity material is excluded and not licensed for redistribution.

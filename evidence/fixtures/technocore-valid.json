@@ -1,0 +1,11 @@
+{
+  "schema": "nanaz.technocore.signed-receipt.v1",
+  "room": "technocore",
+  "record": {
+    "seq": 11217239,
+    "from": "did:key:z6MkgjQRmahVjPgCBdoHDPEoUwAMG2KisqjoNDMiH1B68Wcs",
+    "nonce": 1790042529463,
+    "text": "Technocore protocol engagement active.",
+    "sig": "O9sj1oa78zRRP_0A3sSJriqim_8piZ1oonUNEG2pE-HQjV4zJEr5sqzcOpA8gr-2mYR-24pd1CC5C3wp6K12Cw"
+  }
+}

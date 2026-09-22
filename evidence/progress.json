@@ -1,13 +1,13 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
-  "updated_at": "2026-09-21",
-  "score": 15,
+  "updated_at": "2026-09-22",
+  "score": 20,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
   "workstreams": [
     {"id": "evidence", "weight": 20, "score": 10},
-    {"id": "flagship_tooling", "weight": 20, "score": 5},
+    {"id": "flagship_tooling", "weight": 20, "score": 10},
     {"id": "independent_validation", "weight": 20, "score": 0},
     {"id": "community", "weight": 15, "score": 0},
     {"id": "flipt_case_study", "weight": 15, "score": 0},
@@ -52,6 +52,24 @@
       ],
       "status": "verified",
       "evidence": "Offline fail-closed quality gate and tests reject boilerplate, credential shapes, and unsupported publication claims."
+    },
+    {
+      "id": "signed_receipt_verifier_v1",
+      "title": "Signed Technocore receipt verifier",
+      "workstream": "flagship_tooling",
+      "date": "2026-09-22",
+      "points": 5,
+      "artifacts": [
+        {"path": "receipt_verifier.py", "sha256": "9a6fd3fd1a968c64c9bfe9c40f22978caeac3dcb62048dc808cee98948dffa54"},
+        {"path": "tests/test_receipt_verifier.py", "sha256": "dcd046b4f29e30b541083492116351915617c5e608c9d6074e77001559010952"},
+        {"path": "docs/receipt-verifier.md", "sha256": "2bc70df07803f6ab4a8611e57ee90e3b392879acdd8f95deecec6a184f5a9f9b"},
+        {"path": "evidence/fixtures/technocore-valid.json", "sha256": "a3e94e03fbab39d2fc7de4cbc375658b077c17ec546d9d11cc957bcda85f1d52"},
+        {"path": "evidence/fixtures/technocore-invalid-text.json", "sha256": "827ea304d8383d9e1d9061f70153599fa175c99a6a65ec9c246ea63d22a28f96"},
+        {"path": "evidence/fixtures/technocore-invalid-signature.json", "sha256": "bc61b0a13690008aa3a293224284d183504ac1b7efb9806dc5ec870003ab16a8"},
+        {"path": "evidence/fixtures/technocore-wrong-signer.json", "sha256": "d4dc54122b6ae2d0b0965335f4e87e99900e103a76572db4c8990bd6ae969fb5"}
+      ],
+      "status": "verified",
+      "evidence": "Offline pinned-DID Ed25519 verification passes the captured positive receipt and rejects deterministic tampered-text, tampered-signature, and wrong-signer fixtures; static tests confirm no network, private-key, signing, or write path."
     }
   ],
   "pending_tranches": [

@@ -16,14 +16,14 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | ID | Workstream | Weight | Current | Evidence / next gate |
 |---|---|---:|---:|---|
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
-| flagship_tooling | Quality-gated flagship tooling | 20 | 5 | Offline quality gate and tests are ledgered below. Next: release-quality signed-receipt verifier. |
+| flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
 | independent_validation | Independent validation and adoption | 20 | 0 | Next: independently attributable useful attestations, users, issues, forks, or accepted contributions. |
 | community | Public education and community activity | 15 | 0 | Application/thread existence is not scored without auditable adoption evidence. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 0 | Draft exists but is pending public-safe, independently checkable receipt evidence. |
 | official_readiness | Official-program and testnet readiness | 10 | 0 | Identity and registrations are not scored as allocation readiness without an auditable tranche. |
-| **Total** |  | **100** | **15** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **20** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 15 points
+## Completed evidence ledger — 20 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -51,6 +51,20 @@ Evidence boundary: tests cover DID derivation, aggregate-state calculation, shap
 - Artifact: `tests/test_quality_worker.py` — sha256 `d78bd0b45dd155d7663ffb29ce0f48ed9ed8bba566213cc0ae7bf34cf60eb814`
 
 Evidence boundary: tests reject boilerplate, sensitive credential shapes, private URLs, and unsupported build/research claims. Passing the structural gate never approves publication.
+
+### signed_receipt_verifier_v1 — Signed Technocore receipt verifier (5 points)
+
+- Workstream: `flagship_tooling`
+- Status: `verified`
+- Artifact: `receipt_verifier.py` — sha256 `9a6fd3fd1a968c64c9bfe9c40f22978caeac3dcb62048dc808cee98948dffa54`
+- Artifact: `tests/test_receipt_verifier.py` — sha256 `dcd046b4f29e30b541083492116351915617c5e608c9d6074e77001559010952`
+- Artifact: `docs/receipt-verifier.md` — sha256 `2bc70df07803f6ab4a8611e57ee90e3b392879acdd8f95deecec6a184f5a9f9b`
+- Artifact: `evidence/fixtures/technocore-valid.json` — sha256 `a3e94e03fbab39d2fc7de4cbc375658b077c17ec546d9d11cc957bcda85f1d52`
+- Artifact: `evidence/fixtures/technocore-invalid-text.json` — sha256 `827ea304d8383d9e1d9061f70153599fa175c99a6a65ec9c246ea63d22a28f96`
+- Artifact: `evidence/fixtures/technocore-invalid-signature.json` — sha256 `bc61b0a13690008aa3a293224284d183504ac1b7efb9806dc5ec870003ab16a8`
+- Artifact: `evidence/fixtures/technocore-wrong-signer.json` — sha256 `d4dc54122b6ae2d0b0965335f4e87e99900e103a76572db4c8990bd6ae969fb5`
+
+Evidence boundary: the offline verifier checks exact `room|nonce|text` bytes against an operator-pinned Ed25519 DID. Deterministic fixtures cover valid, tampered-text, tampered-signature, and wrong-signer records. Verification proves authorship and integrity only—not usefulness, acceptance, eligibility, allocation, payment, or on-chain activity.
 
 ## Pending evidence ledger — 5 unscored points
 

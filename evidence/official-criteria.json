@@ -1,0 +1,84 @@
+{
+  "schema": "nanaz.flop-official-criteria.v1",
+  "captured_at": "2026-09-22",
+  "allocation_status": "UNVERIFIED",
+  "claim_boundary": "This snapshot monitors official draft sources and detects drift. It does not establish identity-specific eligibility, allocation, claimability, payment, or token ownership.",
+  "sources": [
+    {
+      "id": "teaser",
+      "url": "https://flop.finance/teaser/",
+      "authority": "official_provisional_overview",
+      "baseline_sha256": "bf8704d8e83f5e3b0fe07f067b5ea239cda90dbb5a22a4c415a4824f2b175173",
+      "required_markers": [
+        "The figures in this document are provisional",
+        "Yellow Paper is the definitive specification",
+        "Flop Testnet is planned for Q4 2026",
+        "Agents — claim a test-token faucet",
+        "After the fifth halving"
+      ]
+    },
+    {
+      "id": "yellowpaper",
+      "url": "https://flop.finance/intro/yellowpaper/",
+      "authority": "official_draft_normative_specification",
+      "baseline_sha256": "d54dfaf4323aaafbebe9777bc9627f9d824d426fdc04d48d8db11d4be8982382",
+      "required_markers": [
+        "Draft — the normative specification of the protocol",
+        "Implementation status (what is built vs. designed)",
+        "Open Specification Items"
+      ]
+    },
+    {
+      "id": "agent",
+      "url": "https://flop.finance/intro/agent",
+      "authority": "official_draft_role_guide",
+      "baseline_sha256": "a7e2b4220b225490099faf2e4e6cf58f0911903ed5c9784b5cbbf089204a757a",
+      "required_markers": [
+        "Compute buyer · Draft whitepaper",
+        "Every 3 FLOP of inference fees unlocks 1 airdropped FLOP",
+        "locked to inference spend or stake delegation"
+      ]
+    },
+    {
+      "id": "miner",
+      "url": "https://flop.finance/intro/miner",
+      "authority": "official_draft_role_guide",
+      "baseline_sha256": "25763364baa2365e3e6a7a20728d076207c8950d9716cdf55e7c94d8821d687c",
+      "required_markers": [
+        "Compute provider · Draft whitepaper",
+        "Miner reward pool 75%",
+        "Stake at least 10,000 FLOP",
+        "Disputes and testnet conversion"
+      ]
+    },
+    {
+      "id": "protocol_parameters",
+      "url": "https://ask.flop.finance/docs/protocol-parameters",
+      "authority": "official_draft_parameter_reference",
+      "baseline_sha256": "7bf40495c8e10bf68c74c2ac1db6971c0fd20ca50ddd092f4a2fce592322e28d",
+      "required_markers": [
+        "Status Draft whitepaper and draft design",
+        "Testnet miner pool 993,384,000 FLOP",
+        "Agent airdrop unlock ratio 3:1",
+        "Miner share 90%",
+        "Number of halvings 6"
+      ]
+    }
+  ],
+  "known_conflicts": [
+    {
+      "id": "halving_count_drift",
+      "source_ids": ["teaser", "protocol_parameters"],
+      "markers": ["After the fifth halving", "Number of halvings 6"],
+      "status": "UNRESOLVED_DRAFT_CONFLICT",
+      "explanation": "The provisional teaser describes a fifth-halving floor while the parameter reference states six halvings. No eligibility inference is made from either value."
+    },
+    {
+      "id": "miner_reward_share_drift",
+      "source_ids": ["miner", "protocol_parameters"],
+      "markers": ["Miner reward pool 75%", "Miner share 90%"],
+      "status": "UNRESOLVED_DRAFT_CONFLICT",
+      "explanation": "Two current official draft surfaces publish different miner block-reward shares. The monitor preserves the conflict instead of choosing a convenient number."
+    }
+  ]
+}

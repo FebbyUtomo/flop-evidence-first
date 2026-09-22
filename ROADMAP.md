@@ -20,10 +20,10 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | independent_validation | Independent validation and adoption | 20 | 0 | Next: independently attributable useful attestations, users, issues, forks, or accepted contributions. |
 | community | Public education and community activity | 15 | 0 | Application/thread existence is not scored without auditable adoption evidence. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
-| official_readiness | Official-program and testnet readiness | 10 | 0 | Identity and registrations are not scored as allocation readiness without an auditable tranche. |
-| **Total** |  | **100** | **25** | Conservative score backed by the completed-tranche ledger. |
+| official_readiness | Official-program and testnet readiness | 10 | 5 | Five official draft surfaces are pinned with material markers, drift detection, and explicit conflict handling. |
+| **Total** |  | **100** | **30** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 25 points
+## Completed evidence ledger — 30 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -78,6 +78,17 @@ Evidence boundary: the offline verifier checks exact `room|nonce|text` bytes aga
 
 Evidence boundary: six immutable Arc Testnet transaction references support graduation, unbond, release, liquidity, and one Auto-Sell tranche through filled settlement. The offline validator enforces ordering, exact maturity, classification, source binding, and exclusion of literal addresses/balances. The explicitly approved public testnet links can reveal isolated burner/executor addresses. This does not prove FLOP eligibility, allocation, payment, mainnet value, or future rewards.
 
+### official_criteria_monitor_v1 — Official criteria drift monitor (5 points)
+
+- Workstream: `official_readiness`
+- Status: `verified`
+- Artifact: `criteria_monitor.py` — sha256 `82154c5220b8dc17eef97b1ae0723932b63ded76a7d52a5bcf878c947e94e13d`
+- Artifact: `tests/test_criteria_monitor.py` — sha256 `7ae1855f7b8e1632123005e5622b5cad222080d9cbfb676d89074af61acf5e68`
+- Artifact: `evidence/official-criteria.json` — sha256 `55019230bcefc786dd01e142a65bd192f72383d2f58860b2782a41d7cdc2cd78`
+- Artifact: `docs/official-criteria-monitor.md` — sha256 `ae69c6ce7367ac0cf2c86ca3a95b26d55f8e63008e648b2899e7f06805dedee2`
+
+Evidence boundary: the read-only monitor pins five official draft FLOP surfaces, detects content and material-marker drift, preserves two unresolved official contradictions, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
+
 ## Pending evidence ledger — 0 unscored points
 
 No pending tranche is scored.
@@ -92,10 +103,6 @@ No pending tranche is scored.
 2. **Community adoption evidence (5 points)**
    - Publish a bilingual tutorial or demo.
    - Record real, non-Sybil use: issue, fork, installation receipt, or independent feedback.
-
-3. **Official criteria monitor and testnet readiness (5 points)**
-   - Detect material changes in official Flop Labs sources.
-   - Prepare receipt-first tooling without wallet signing or irreversible actions.
 
 ## Daily execution rules
 

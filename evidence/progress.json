@@ -1,7 +1,7 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
   "updated_at": "2026-09-22",
-  "score": 20,
+  "score": 25,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
@@ -10,7 +10,7 @@
     {"id": "flagship_tooling", "weight": 20, "score": 10},
     {"id": "independent_validation", "weight": 20, "score": 0},
     {"id": "community", "weight": 15, "score": 0},
-    {"id": "flipt_case_study", "weight": 15, "score": 0},
+    {"id": "flipt_case_study", "weight": 15, "score": 5},
     {"id": "official_readiness", "weight": 10, "score": 0}
   ],
   "completed_tranches": [
@@ -70,18 +70,23 @@
       ],
       "status": "verified",
       "evidence": "Offline pinned-DID Ed25519 verification passes the captured positive receipt and rejects deterministic tampered-text, tampered-signature, and wrong-signer fixtures; static tests confirm no network, private-key, signing, or write path."
-    }
-  ],
-  "pending_tranches": [
+    },
     {
       "id": "flipt_case_study_v1",
       "title": "Flipt lifecycle case study",
       "workstream": "flipt_case_study",
-      "date": "2026-09-21",
+      "date": "2026-09-22",
       "points": 5,
-      "artifact": "FLOP_FLIPT_CASE_STUDY.md",
-      "status": "pending",
-      "blocker": "Needs public-safe receipt fixtures or independently checkable evidence before scoring or publication."
+      "artifacts": [
+        {"path": "FLOP_FLIPT_CASE_STUDY.md", "sha256": "b2bce836054afc202e2fdab268fbf148292d60bb61f744846750459ff80e6757"},
+        {"path": "flipt_lifecycle.py", "sha256": "5c7c84d956152c2290c642653ffd729bede5ce48aad55dbf22b9a9cd5201f230"},
+        {"path": "tests/test_flipt_lifecycle.py", "sha256": "7e63d28503d4a3aabd8c3f00bad82ccbeddb27c1ec7e5eae82dee26d70532683"},
+        {"path": "evidence/fixtures/flipt-lifecycle-valid.json", "sha256": "fb998cfdc18d88e8249fddd5d8bf38a6c180d0b420010520eb7c6bd9d8d65eea"},
+        {"path": "docs/flipt-lifecycle.md", "sha256": "846626dc61bdbb0f96d271af8a760ffdca6605187c97e3ed8ad5e94ad1311126"}
+      ],
+      "status": "verified",
+      "evidence": "Six explicitly approved public Arc Testnet references plus an offline state-machine validator and adversarial tests verify pinned semantic fields, exact 90-second maturity, Auto-Sell classification, source binding, and exclusion of literal address/balance fields; linked isolated testnet addresses remain publicly discoverable."
     }
-  ]
+  ],
+  "pending_tranches": []
 }

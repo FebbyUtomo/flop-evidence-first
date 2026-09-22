@@ -1,0 +1,92 @@
+{
+  "schema": "nanaz.flipt-lifecycle.v1",
+  "chain_id": 5042002,
+  "network": "Arc Testnet",
+  "claim_boundary": "Public transaction references and deterministic state checks support this testnet lifecycle trace. They do not prove FLOP eligibility, allocation, payment, mainnet value, or future rewards.",
+  "events": [
+    {
+      "action": "graduated",
+      "tx_hash": "0x382e36151a6803eed28af47c904e4b998719c7a8cf1e88e306c46cdb117246a7",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0x382e36151a6803eed28af47c904e4b998719c7a8cf1e88e306c46cdb117246a7",
+      "block_number": 62165818,
+      "timestamp": "2026-09-15T02:55:32Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0xff6d8d05",
+      "input_sha256": "8196827295e102a9d8df498eaf2dba430817660e41b1a35692a64f422cdc7218",
+      "decoded_method": "graduate"
+    },
+    {
+      "action": "unbond_requested",
+      "tx_hash": "0x5d36fae98c3986c2d314c75ad831779021129173d839f2197b52166089c31738",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0x5d36fae98c3986c2d314c75ad831779021129173d839f2197b52166089c31738",
+      "block_number": 62211650,
+      "timestamp": "2026-09-15T09:39:31Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0xede94c22",
+      "input_sha256": "bd72f6a777bd7d72e9324decd84217b9c1f61b877ea5ab74f5ff302712c64973",
+      "amount": {"symbol": "NAKF", "value": "100000"},
+      "maturity_seconds": 90,
+      "unlocks_at": "2026-09-15T09:41:01Z"
+    },
+    {
+      "action": "release_claimed",
+      "tx_hash": "0x195124558bd5fe75a316c638869600d600f4d8f133b987333d1b133f17e6e249",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0x195124558bd5fe75a316c638869600d600f4d8f133b987333d1b133f17e6e249",
+      "block_number": 62211796,
+      "timestamp": "2026-09-15T09:41:17Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0x5dd68e16",
+      "input_sha256": "dfdc9c5c4987a972098008e96cb59eb35a0e8902090a75528f50af0749b6e7a2",
+      "amount": {"symbol": "NAKF", "value": "100000"},
+      "swap_observed": false
+    },
+    {
+      "action": "liquidity_added",
+      "tx_hash": "0xb8ec86b05769dc9f7e3b0a27d1662a977965bc6800078d34ee8dfa0e1052839e",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0xb8ec86b05769dc9f7e3b0a27d1662a977965bc6800078d34ee8dfa0e1052839e",
+      "block_number": 62212435,
+      "timestamp": "2026-09-15T09:47:45Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0x2aaeb990",
+      "input_sha256": "a1530185616625c85fa6565d297a361ac731996ddcdffaf68259b095a58f6619",
+      "lp_receipt": {"symbol": "fLP-NAKF", "value": "0.389179046468619699"}
+    },
+    {
+      "action": "auto_sell_created",
+      "tx_hash": "0xd9644130255ceb395a7d4932eb1666e238143d882e86d8d33cde3d594ed9bc9a",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0xd9644130255ceb395a7d4932eb1666e238143d882e86d8d33cde3d594ed9bc9a",
+      "block_number": 62214167,
+      "timestamp": "2026-09-15T10:02:20Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0xede94c22",
+      "input_sha256": "25ad25ae3d6badd2de8830deb0569fee3aad65cc0ca6f137885004845bc69f28",
+      "mode": "auto_sell",
+      "tranche_id": 5170,
+      "amount": {"symbol": "NAKF", "value": "100000"},
+      "maturity_seconds": 90,
+      "matures_at": "2026-09-15T10:03:50Z",
+      "keeper_funding": {"symbol": "test-USDC", "value": "0.02"}
+    },
+    {
+      "action": "auto_sell_executed",
+      "tx_hash": "0x76124ead65b3e3c01449ee01764d54e9e73f243ea6ec4cf3580d088a1ee6c7e1",
+      "source_url": "https://api-testnet.arc-scan.org/v1/txs/0x76124ead65b3e3c01449ee01764d54e9e73f243ea6ec4cf3580d088a1ee6c7e1",
+      "block_number": 62214390,
+      "timestamp": "2026-09-15T10:04:14Z",
+      "status": "success",
+      "finalized": true,
+      "method_selector": "0x64ec4d23",
+      "input_sha256": "019c47005e6eac9572ab9cb44f8d6c2dd598eee8e3a84a1635b9c1be92cb2501",
+      "mode": "auto_sell",
+      "tranche_id": 5170,
+      "external_executor": true,
+      "settlement": {"symbol": "test-USDC", "value": "1.405283"},
+      "final_state": "filled"
+    }
+  ]
+}

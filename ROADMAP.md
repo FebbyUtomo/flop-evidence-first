@@ -19,11 +19,11 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
 | independent_validation | Independent validation and adoption | 20 | 0 | Next: independently attributable useful attestations, users, issues, forks, or accepted contributions. |
 | community | Public education and community activity | 15 | 0 | Application/thread existence is not scored without auditable adoption evidence. |
-| flipt_case_study | Flipt lifecycle engineering case study | 15 | 0 | Draft exists but is pending public-safe, independently checkable receipt evidence. |
+| flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 0 | Identity and registrations are not scored as allocation readiness without an auditable tranche. |
-| **Total** |  | **100** | **20** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **25** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 20 points
+## Completed evidence ledger — 25 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -66,38 +66,34 @@ Evidence boundary: tests reject boilerplate, sensitive credential shapes, privat
 
 Evidence boundary: the offline verifier checks exact `room|nonce|text` bytes against an operator-pinned Ed25519 DID. Deterministic fixtures cover valid, tampered-text, tampered-signature, and wrong-signer records. Verification proves authorship and integrity only—not usefulness, acceptance, eligibility, allocation, payment, or on-chain activity.
 
-## Pending evidence ledger — 5 unscored points
-
 ### flipt_case_study_v1 — Flipt lifecycle case study (5 points)
 
 - Workstream: `flipt_case_study`
-- Status: `pending`
-- Artifact: `FLOP_FLIPT_CASE_STUDY.md`
+- Status: `verified`
+- Artifact: `FLOP_FLIPT_CASE_STUDY.md` — sha256 `b2bce836054afc202e2fdab268fbf148292d60bb61f744846750459ff80e6757`
+- Artifact: `flipt_lifecycle.py` — sha256 `5c7c84d956152c2290c642653ffd729bede5ce48aad55dbf22b9a9cd5201f230`
+- Artifact: `tests/test_flipt_lifecycle.py` — sha256 `7e63d28503d4a3aabd8c3f00bad82ccbeddb27c1ec7e5eae82dee26d70532683`
+- Artifact: `evidence/fixtures/flipt-lifecycle-valid.json` — sha256 `fb998cfdc18d88e8249fddd5d8bf38a6c180d0b420010520eb7c6bd9d8d65eea`
+- Artifact: `docs/flipt-lifecycle.md` — sha256 `846626dc61bdbb0f96d271af8a760ffdca6605187c97e3ed8ad5e94ad1311126`
 
-The narrative and privacy scan are useful but insufficient for evidence-only scoring. Before it can earn five points or be published, it needs public-safe receipt fixtures or other independently checkable evidence supporting the lifecycle claims. Until then its contribution is **0 points**.
+Evidence boundary: six immutable Arc Testnet transaction references support graduation, unbond, release, liquidity, and one Auto-Sell tranche through filled settlement. The offline validator enforces ordering, exact maturity, classification, source binding, and exclusion of literal addresses/balances. The explicitly approved public testnet links can reveal isolated burner/executor addresses. This does not prove FLOP eligibility, allocation, payment, mainnet value, or future rewards.
+
+## Pending evidence ledger — 0 unscored points
+
+No pending tranche is scored.
 
 ## Next 5-point tranches
 
-1. **Flagship receipt verifier (5 points)**
-   - Verify signed Technocore records against a pinned DID.
-   - Include deterministic positive and negative fixtures.
-   - No key loading or network write/publish path.
-
-2. **Flipt public evidence package (5 points)**
-   - Add privacy-reviewed receipt/event fixtures and deterministic hashes.
-   - Preserve claim boundaries and avoid wallet/private-balance disclosure.
-   - Re-run independent evidence/security review before publication.
-
-3. **Independent validation package (5 points)**
+1. **Independent validation package (5 points)**
    - Curate 10–20 strongest contributions.
    - Bind each to evidence, result hash, and external ATTEST/ACCEPT state.
    - Unverified entries remain explicitly unverified.
 
-4. **Community adoption evidence (5 points)**
+2. **Community adoption evidence (5 points)**
    - Publish a bilingual tutorial or demo.
    - Record real, non-Sybil use: issue, fork, installation receipt, or independent feedback.
 
-5. **Official criteria monitor and testnet readiness (5 points)**
+3. **Official criteria monitor and testnet readiness (5 points)**
    - Detect material changes in official Flop Labs sources.
    - Prepare receipt-first tooling without wallet signing or irreversible actions.
 
@@ -106,6 +102,6 @@ The narrative and privacy scan are useful but insufficient for evidence-only sco
 - Prefer one complete 5-point tranche over five unfinished tasks.
 - Never revive generic Kibble volume farming.
 - Never create identity farms or fake engagement.
-- Never expose keys, wallet identifiers, private balances, host details, or raw private logs.
+- Never expose keys, private/mainnet wallet identifiers, private balances, host details, or raw private logs. Isolated testnet transaction references require explicit operator approval and a written disclosure boundary.
 - Public writes require privacy review, tests, exact-target verification, and read-back.
 - If an external dependency blocks a tranche, work on the next independent tranche and report the blocker honestly.

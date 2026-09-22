@@ -4,7 +4,7 @@
 
 This report summarizes a bounded Arc testnet experiment performed through the Flipt interface in September 2026. It documents observed protocol behavior and engineering findings. Test tokens, displayed balances, and testnet rewards are not income, mainnet assets, FLOP allocation, or proof of future eligibility.
 
-Private wallet identifiers, account balances, operator infrastructure, and credentials are intentionally excluded. The underlying private evidence set retains transaction receipts and screenshots for operator-side verification.
+Private/mainnet wallet identifiers, account balances, operator infrastructure, and credentials are intentionally excluded. A public-safe fixture retains six immutable Arc Testnet transaction references, block/timestamp facts, and bounded lifecycle fields. Following explicit operator approval, those links intentionally make the isolated testnet burner and public executor addresses discoverable through Arcscan; they are not represented as private or mainnet identities.
 
 ## Lifecycle coverage
 
@@ -55,7 +55,18 @@ Two equal-sized Auto-Sell tranches were created. For each observed tranche:
 - the resulting test-USDC was delivered after fees/reward handling;
 - the final state was `filled`.
 
-This is consistent with an external keeper path in the retained private evidence. Because the public case-study draft does not yet include independently checkable receipt fixtures, it does not claim public verification of the executor identity.
+This is consistent with an external keeper path. The public fixture establishes that a separate finalized execution transaction followed maturity, while deliberately excluding the executor address. It therefore supports external execution without claiming public identity attribution.
+
+## Public evidence package
+
+The case study is accompanied by:
+
+- `evidence/fixtures/flipt-lifecycle-valid.json` — six public Arc Testnet transaction references covering graduation, unbond, release, liquidity, and an Auto-Sell tranche through filled settlement;
+- `flipt_lifecycle.py` — offline, read-only state-machine and privacy validator;
+- `tests/test_flipt_lifecycle.py` — deterministic positive and adversarial tests;
+- `docs/flipt-lifecycle.md` — reproduction steps and evidence boundaries.
+
+The validator rejects reordered events, premature release/execution, duplicate transaction hashes, source/hash mismatches, Conditional Exit misclassification, wallet addresses, balances, and sensitive key names. It does not fetch the network; each source URL is available for independent read-back.
 
 ## Engineering findings
 

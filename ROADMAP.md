@@ -18,7 +18,7 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
 | flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
 | independent_validation | Independent validation and adoption | 20 | 0 | Next: independently attributable useful attestations, users, issues, forks, or accepted contributions. |
-| community | Public education and community activity | 15 | 0 | Application/thread existence is not scored without auditable adoption evidence. |
+| community | Public education and community activity | 15 | 0 | Bilingual tutorial published and announced from the pinned DID. Points stay 0 until independent adoption evidence exists. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 5 | Five official draft surfaces are pinned with material markers, drift detection, and explicit conflict handling. |
 | **Total** |  | **100** | **30** | Conservative score backed by the completed-tranche ledger. |
@@ -89,9 +89,16 @@ Evidence boundary: six immutable Arc Testnet transaction references support grad
 
 Evidence boundary: the read-only monitor pins five official draft FLOP surfaces, detects content and material-marker drift, preserves two unresolved official contradictions, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
 
-## Pending evidence ledger — 0 unscored points
+## Pending evidence ledger — 5 unscored points
 
-No pending tranche is scored.
+### community_tutorial_v1 — Bilingual tutorial and community announcement (5 points)
+
+- Workstream: `community`
+- Status: `pending`
+- Artifact: `docs/tutorial-bilingual.md`
+- Artifact: `evidence/fixtures/community-announce-receipt.json`
+
+The bilingual tutorial and the DID-signed Technocore announcement (seq 11287734) are complete and verifiable, but community adoption evidence is still zero: no external issue, fork, install receipt, or independent feedback exists yet. Until independently attributable adoption is recorded, this tranche earns **0 points**.
 
 ## Next 5-point tranches
 

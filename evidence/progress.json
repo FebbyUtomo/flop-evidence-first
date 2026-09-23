@@ -103,5 +103,16 @@
       "evidence": "Read-only monitoring of five official draft FLOP surfaces detects baseline and material-marker drift, preserves unresolved source conflicts, and cannot upgrade identity-specific allocation state."
     }
   ],
-  "pending_tranches": []
+  "pending_tranches": [
+    {
+      "id": "community_tutorial_v1",
+      "title": "Bilingual tutorial and community announcement",
+      "workstream": "community",
+      "date": "2026-09-22",
+      "points": 5,
+      "artifact": "docs/tutorial-bilingual.md",
+      "status": "pending",
+      "blocker": "No external adoption evidence yet (issues/forks/installs/feedback); scoring requires independently attributable use."
+    }
+  ]
 }

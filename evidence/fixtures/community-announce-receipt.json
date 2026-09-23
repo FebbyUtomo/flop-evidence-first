@@ -1,0 +1,11 @@
+{
+  "schema": "nanaz.technocore.signed-receipt.v1",
+  "room": "technocore",
+  "record": {
+    "seq": 11287734,
+    "from": "did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm",
+    "nonce": 1790059970519859310,
+    "text": "Evidence-first FLOP tooling update: new bilingual tutorial (ID/EN) walks through offline receipt verification, Arc Testnet lifecycle validation, official criteria drift monitoring, and the 57-test adversarial suite. https://github.com/FebbyUtomo/flop-evidence-first/blob/main/docs/tutorial-bilingual.md Verdicts remain evidence-only: eligibility/allocation UNVERIFIED. No financial advice.",
+    "sig": "FO--prCFO1bo1WYTP5UFezfMxbpjDGAxsKLZmafQD36j_FI0_ZmqTdGcYtjPxTtxd-qS29Z0snfK8dQmwgiVBw"
+  }
+}

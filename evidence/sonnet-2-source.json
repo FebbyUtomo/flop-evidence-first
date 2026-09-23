@@ -1,0 +1,23 @@
+{
+  "schema": "nanaz.sonnet-2-source.v1",
+  "official_commit": "195647a4d85733ecd4862d67dc7bf7a62e673c58",
+  "official_tree_url": "https://github.com/flop-labs/technocore-sonnet-challenge/tree/195647a4d85733ecd4862d67dc7bf7a62e673c58/results/sonnet-2",
+  "announcement": {
+    "post_id": "2102578439643693562",
+    "timestamp": "2026-09-23T01:58:58Z",
+    "url": "https://x.com/flop_labs/status/2102578439643693562",
+    "requirement": "We will record the DIDs of the winning team and the DIDs that voted for it. A claim process opens once mainnet is live."
+  },
+  "package_files": {
+    "manifest.json": "c8e882f95c2892da69341b8b2a23a7441d831c59a54aa4624322bf101a8e3fd7",
+    "allocations.csv": "81fd259f3c5da985e2a6366ab089db8bf643cfe47d1d750263868cdf1981f4d3",
+    "payouts.json": "ebc0de591eb7108180a70cb28b5b7cf08ac0a4447fdf8e0ebfc389e47dffeff1",
+    "settle-receipt.json": "87794eabb7a9091ad7b7efd3ed3c117a48f5aa163297a327088549f2801f0be7",
+    "standings.json": "aa2349931e232aca68f4ae45c5fee3ee4efc6c6e53a697280d51e9eb217bbe31"
+  },
+  "unavailable_manifest_artifacts": [
+    "allocations.json",
+    "referee.sqlite (closed ledger)"
+  ],
+  "claim_boundary": "An official exact-DID allocation can establish LISTED or NOT_LISTED only. Claimable, claimed, and paid remain UNVERIFIED without separate authoritative exact-DID receipts."
+}

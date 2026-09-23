@@ -20,10 +20,10 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | independent_validation | Independent validation and adoption | 20 | 5 | Ten strongest results are hash-bound to commit-pinned URLs with separate fail-closed ATTEST/ACCEPT states. All external states remain UNVERIFIED. |
 | community | Public education and community activity | 15 | 0 | Bilingual tutorial published and announced from the pinned DID. Points stay 0 until independent adoption evidence exists. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
-| official_readiness | Official-program and testnet readiness | 10 | 5 | Five official draft surfaces are pinned with material markers, drift detection, and explicit conflict handling. |
-| **Total** |  | **100** | **35** | Conservative score backed by the completed-tranche ledger. |
+| official_readiness | Official-program and testnet readiness | 10 | 10 | Draft criteria monitoring plus the commit-pinned Sonnet-2 result verifier are ledgered below. |
+| **Total** |  | **100** | **40** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 35 points
+## Completed evidence ledger — 40 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -88,6 +88,23 @@ Evidence boundary: six immutable Arc Testnet transaction references support grad
 - Artifact: `docs/official-criteria-monitor.md` — sha256 `ae69c6ce7367ac0cf2c86ca3a95b26d55f8e63008e648b2899e7f06805dedee2`
 
 Evidence boundary: the read-only monitor pins five official draft FLOP surfaces, detects content and material-marker drift, preserves two unresolved official contradictions, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
+
+### sonnet_results_verifier_v1 — Sonnet-2 result and allocation verifier (5 points)
+
+- Workstream: `official_readiness`
+- Status: `verified`
+- Artifact: `sonnet_results_verifier.py` — sha256 `e2352c6a505c0208aa3b8755f52bab38056884d09250a5a28a982791902a4e17`
+- Artifact: `tests/test_sonnet_results_verifier.py` — sha256 `8e7f31c15ee7d518adf149c9b5e6418e6883d2c6cc12a8f551bbc34d02161520`
+- Artifact: `docs/sonnet-results-verifier.md` — sha256 `1e36ffec68d302f1222151f1d8f3d4e1408a945746eb08490185836875350f7b`
+- Artifact: `evidence/sonnet-2-source.json` — sha256 `56ca745f7c9bf52ae1d4e45c229be668b6a5c1dda60ba52449baeec1869ae6e3`
+- Artifact: `evidence/fixtures/sonnet-2-negative-cases.json` — sha256 `4b52d656ed0edabab1d16b193b8f5bbcd36def947dc98f6b40de6081326ecb18`
+- Artifact: `evidence/fixtures/sonnet-2-official/manifest.json` — sha256 `c8e882f95c2892da69341b8b2a23a7441d831c59a54aa4624322bf101a8e3fd7`
+- Artifact: `evidence/fixtures/sonnet-2-official/allocations.csv` — sha256 `81fd259f3c5da985e2a6366ab089db8bf643cfe47d1d750263868cdf1981f4d3`
+- Artifact: `evidence/fixtures/sonnet-2-official/payouts.json` — sha256 `ebc0de591eb7108180a70cb28b5b7cf08ac0a4447fdf8e0ebfc389e47dffeff1`
+- Artifact: `evidence/fixtures/sonnet-2-official/settle-receipt.json` — sha256 `87794eabb7a9091ad7b7efd3ed3c117a48f5aa163297a327088549f2801f0be7`
+- Artifact: `evidence/fixtures/sonnet-2-official/standings.json` — sha256 `aa2349931e232aca68f4ae45c5fee3ee4efc6c6e53a697280d51e9eb217bbe31`
+
+Evidence boundary: the offline verifier pins @flop_labs post `2102578439643693562` (2026-09-23T01:58:58Z) and official commit `195647a4d85733ecd4862d67dc7bf7a62e673c58`, verifies all five available package files, reconciles 6,856 exact DIDs and 97,964 allocated units across allocations, payouts, settlement, and standings, and fails closed on deterministic tampering. Primary exact-DID lookup is `NOT_LISTED`. The unavailable `allocations.json` and closed referee ledger remain a disclosed replay gap; `claimable`, `claimed`, and `paid` remain `UNVERIFIED`.
 
 ### contribution_registry_v1 — Curated contribution evidence registry (5 points)
 

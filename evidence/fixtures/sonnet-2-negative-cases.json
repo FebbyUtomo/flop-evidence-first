@@ -1,0 +1,29 @@
+{
+  "schema": "nanaz.sonnet-2-negative-cases.v1",
+  "cases": [
+    {
+      "id": "manifest_hash_tamper",
+      "target": "manifest.json",
+      "operation": "replace_sha256",
+      "expected_error": "source hash mismatch: manifest.json"
+    },
+    {
+      "id": "payout_amount_tamper",
+      "target": "payouts.json",
+      "operation": "replace_first_amount",
+      "expected_error": "source hash mismatch: payouts.json"
+    },
+    {
+      "id": "allocation_amount_tamper",
+      "target": "allocations.csv",
+      "operation": "replace_first_amount",
+      "expected_error": "source hash mismatch: allocations.csv"
+    },
+    {
+      "id": "source_commit_tamper",
+      "target": "source_record",
+      "operation": "replace_commit",
+      "expected_error": "official commit pin mismatch"
+    }
+  ]
+}

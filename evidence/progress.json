@@ -1,7 +1,7 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
   "updated_at": "2026-09-23",
-  "score": 35,
+  "score": 40,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
@@ -11,7 +11,7 @@
     {"id": "independent_validation", "weight": 20, "score": 5},
     {"id": "community", "weight": 15, "score": 0},
     {"id": "flipt_case_study", "weight": 15, "score": 5},
-    {"id": "official_readiness", "weight": 10, "score": 5}
+    {"id": "official_readiness", "weight": 10, "score": 10}
   ],
   "completed_tranches": [
     {
@@ -116,6 +116,27 @@
       ],
       "status": "verified",
       "evidence": "Ten strongest public results are hash-bound to exact files, full commits, and commit-pinned URLs; fail-closed validation preserves all ten ATTEST and ACCEPT states as UNVERIFIED because no independent exact-result receipts exist."
+    },
+    {
+      "id": "sonnet_results_verifier_v1",
+      "title": "Sonnet-2 result and allocation verifier",
+      "workstream": "official_readiness",
+      "date": "2026-09-23",
+      "points": 5,
+      "artifacts": [
+        {"path": "sonnet_results_verifier.py", "sha256": "e2352c6a505c0208aa3b8755f52bab38056884d09250a5a28a982791902a4e17"},
+        {"path": "tests/test_sonnet_results_verifier.py", "sha256": "8e7f31c15ee7d518adf149c9b5e6418e6883d2c6cc12a8f551bbc34d02161520"},
+        {"path": "docs/sonnet-results-verifier.md", "sha256": "1e36ffec68d302f1222151f1d8f3d4e1408a945746eb08490185836875350f7b"},
+        {"path": "evidence/sonnet-2-source.json", "sha256": "56ca745f7c9bf52ae1d4e45c229be668b6a5c1dda60ba52449baeec1869ae6e3"},
+        {"path": "evidence/fixtures/sonnet-2-negative-cases.json", "sha256": "4b52d656ed0edabab1d16b193b8f5bbcd36def947dc98f6b40de6081326ecb18"},
+        {"path": "evidence/fixtures/sonnet-2-official/manifest.json", "sha256": "c8e882f95c2892da69341b8b2a23a7441d831c59a54aa4624322bf101a8e3fd7"},
+        {"path": "evidence/fixtures/sonnet-2-official/allocations.csv", "sha256": "81fd259f3c5da985e2a6366ab089db8bf643cfe47d1d750263868cdf1981f4d3"},
+        {"path": "evidence/fixtures/sonnet-2-official/payouts.json", "sha256": "ebc0de591eb7108180a70cb28b5b7cf08ac0a4447fdf8e0ebfc389e47dffeff1"},
+        {"path": "evidence/fixtures/sonnet-2-official/settle-receipt.json", "sha256": "87794eabb7a9091ad7b7efd3ed3c117a48f5aa163297a327088549f2801f0be7"},
+        {"path": "evidence/fixtures/sonnet-2-official/standings.json", "sha256": "aa2349931e232aca68f4ae45c5fee3ee4efc6c6e53a697280d51e9eb217bbe31"}
+      ],
+      "status": "verified",
+      "evidence": "Commit-pinned offline verification reconciles all five available official Sonnet-2 package files, 6,856 exact DIDs, 97,964 allocated units, settlement, and standings; deterministic negative fixtures fail closed, primary DID is NOT_LISTED, two unavailable manifest artifacts are disclosed, and claimable/claimed/paid remain UNVERIFIED."
     }
   ],
   "pending_tranches": [

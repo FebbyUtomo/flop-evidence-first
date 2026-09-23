@@ -1,0 +1,88 @@
+{
+  "schema": "nanaz.flop-contributions.v1",
+  "repository": "https://github.com/FebbyUtomo/flop-evidence-first",
+  "primary_did": "did:key:z6MkuqDkBuKQKSDuPH5F4qms2GPNfQeWLswuqPghrxdpcRRm",
+  "allocation_status": "UNVERIFIED",
+  "contributions": [
+    {
+      "id": "evidence_report",
+      "title": "Public claim-boundary report and aggregate audit",
+      "category": "evidence",
+      "result": {"path": "README.md", "sha256": "56cbb3ede789bcad1b5f0e044d5595909fbb04b320cb7c064cf29740f8f5d4b5", "commit": "a6011f4619e32c6201dbcf8d6e0f88e481011ff2", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/a6011f4619e32c6201dbcf8d6e0f88e481011ff2/README.md"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "deterministic_analyzer",
+      "title": "Deterministic private-snapshot aggregate analyzer",
+      "category": "tooling",
+      "result": {"path": "analyze.py", "sha256": "b8004fb8487793f36a4847ece200ab2db5af0e078a8cbdb3439b71064e2d7444", "commit": "315fb6c49d05cc31c90e1555b05d7d0cf41dca29", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/315fb6c49d05cc31c90e1555b05d7d0cf41dca29/analyze.py"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "offline_quality_gate",
+      "title": "Fail-closed offline contribution quality gate",
+      "category": "tooling",
+      "result": {"path": "quality_worker.py", "sha256": "e54b4750f0202a2c70d25a8efa9136fe0f890fb643c41ffb22a288f7064f8d7e", "commit": "315fb6c49d05cc31c90e1555b05d7d0cf41dca29", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/315fb6c49d05cc31c90e1555b05d7d0cf41dca29/quality_worker.py"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "signed_publication_record",
+      "title": "Signed Technocore repository publication record",
+      "category": "evidence",
+      "result": {"path": "evidence/technocore-receipt.json", "sha256": "c609a2f6518003a74258eff7601d38341f423e1e82fc2041cad37cd278a29508", "commit": "4f5699a2eccbf667b68920cf267b68b2cbbdd1b6", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/4f5699a2eccbf667b68920cf267b68b2cbbdd1b6/evidence/technocore-receipt.json"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "creator_application_record",
+      "title": "Creator application submission boundary record",
+      "category": "readiness",
+      "result": {"path": "CREATOR_APPLICATION.md", "sha256": "0497d47588e8fcbc1667e4ec023790ce1a41dfe6dc9a260dfabac29e51491e89", "commit": "7454a83d3e807e6fc3a497b6c31f23cfdc70138a", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/7454a83d3e807e6fc3a497b6c31f23cfdc70138a/CREATOR_APPLICATION.md"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "roadmap_integrity_validator",
+      "title": "Fail-closed roadmap and score integrity validator",
+      "category": "tooling",
+      "result": {"path": "scripts/verify_roadmap.py", "sha256": "cdebd6b6f0c6bea9f7ac41d0bff4a986319237fb2b5dcf853e21be3bf7e8bfcc", "commit": "a6011f4619e32c6201dbcf8d6e0f88e481011ff2", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/a6011f4619e32c6201dbcf8d6e0f88e481011ff2/scripts/verify_roadmap.py"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "signed_receipt_verifier",
+      "title": "Pinned-DID offline Technocore receipt verifier",
+      "category": "tooling",
+      "result": {"path": "receipt_verifier.py", "sha256": "9a6fd3fd1a968c64c9bfe9c40f22978caeac3dcb62048dc808cee98948dffa54", "commit": "0cf08f9385940775a05590ed1e7f1d434f6cc202", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/0cf08f9385940775a05590ed1e7f1d434f6cc202/receipt_verifier.py"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "flipt_lifecycle_case_study",
+      "title": "Receipt-bound Flipt Arc Testnet lifecycle case study",
+      "category": "testnet",
+      "result": {"path": "FLOP_FLIPT_CASE_STUDY.md", "sha256": "b2bce836054afc202e2fdab268fbf148292d60bb61f744846750459ff80e6757", "commit": "1ebcdb9b490b4d44d6a7b1940afd8188cdf51966", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/1ebcdb9b490b4d44d6a7b1940afd8188cdf51966/FLOP_FLIPT_CASE_STUDY.md"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "official_criteria_monitor",
+      "title": "Read-only official FLOP criteria drift monitor",
+      "category": "readiness",
+      "result": {"path": "criteria_monitor.py", "sha256": "82154c5220b8dc17eef97b1ae0723932b63ded76a7d52a5bcf878c947e94e13d", "commit": "3b4fa595ce9aee5cbd596ba523e0d9cfab0c2ad7", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/3b4fa595ce9aee5cbd596ba523e0d9cfab0c2ad7/criteria_monitor.py"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    },
+    {
+      "id": "bilingual_verification_tutorial",
+      "title": "Bilingual evidence-first verification tutorial",
+      "category": "education",
+      "result": {"path": "docs/tutorial-bilingual.md", "sha256": "c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2", "commit": "f31eb692037d68b0cb2089013607230fa32dca95", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/f31eb692037d68b0cb2089013607230fa32dca95/docs/tutorial-bilingual.md"},
+      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
+    }
+  ]
+}

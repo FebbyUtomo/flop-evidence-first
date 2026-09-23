@@ -17,13 +17,13 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 |---|---|---:|---:|---|
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
 | flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
-| independent_validation | Independent validation and adoption | 20 | 0 | Next: independently attributable useful attestations, users, issues, forks, or accepted contributions. |
+| independent_validation | Independent validation and adoption | 20 | 5 | Ten strongest results are hash-bound to commit-pinned URLs with separate fail-closed ATTEST/ACCEPT states. All external states remain UNVERIFIED. |
 | community | Public education and community activity | 15 | 0 | Bilingual tutorial published and announced from the pinned DID. Points stay 0 until independent adoption evidence exists. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 5 | Five official draft surfaces are pinned with material markers, drift detection, and explicit conflict handling. |
-| **Total** |  | **100** | **30** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **35** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 30 points
+## Completed evidence ledger — 35 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -89,6 +89,17 @@ Evidence boundary: six immutable Arc Testnet transaction references support grad
 
 Evidence boundary: the read-only monitor pins five official draft FLOP surfaces, detects content and material-marker drift, preserves two unresolved official contradictions, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
 
+### contribution_registry_v1 — Curated contribution evidence registry (5 points)
+
+- Workstream: `independent_validation`
+- Status: `verified`
+- Artifact: `contribution_registry.py` — sha256 `ee62acbc0b39eb1308512e253c0cec764b5d009f46067e582e11507a3ce43a0c`
+- Artifact: `evidence/contributions.json` — sha256 `6ea15b1faccdd6ddd06dc130bc7d8c10acbd9beeb2dbdc07a35f096f51e3066c`
+- Artifact: `docs/contribution-registry.md` — sha256 `18c55a1d8f38a01bf5cf98ad531aacd44ed07b9a7a86268ff4c24a87efc74080`
+- Artifact: `tests/test_contribution_registry.py` — sha256 `b2833adbf199ad2592da58eb838b26f898e6e7a2d838a58a5e85916778d315c0`
+
+Evidence boundary: ten curated public results are bound to exact artifact hashes, full commits, and commit-pinned URLs. The offline validator rejects altered results, ambiguous URLs, fake status evidence, and self-attestation presented as independent validation. All ten ATTEST and ten ACCEPT states remain `UNVERIFIED`; curation does not manufacture endorsement, eligibility, allocation, or payment.
+
 ## Pending evidence ledger — 5 unscored points
 
 ### community_tutorial_v1 — Bilingual tutorial and community announcement (5 points)
@@ -102,14 +113,13 @@ The bilingual tutorial and the DID-signed Technocore announcement (seq 11287734)
 
 ## Next 5-point tranches
 
-1. **Independent validation package (5 points)**
-   - Curate 10–20 strongest contributions.
-   - Bind each to evidence, result hash, and external ATTEST/ACCEPT state.
-   - Unverified entries remain explicitly unverified.
-
-2. **Community adoption evidence (5 points)**
+1. **Community adoption evidence (5 points)**
    - Publish a bilingual tutorial or demo.
    - Record real, non-Sybil use: issue, fork, installation receipt, or independent feedback.
+
+2. **Independent acceptance upgrade (5 points)**
+   - Obtain exact-result ATTEST or ACCEPT receipts from an attributable independent actor.
+   - Verify the actor, receipt URL, and result hash before changing any registry status.
 
 ## Daily execution rules
 

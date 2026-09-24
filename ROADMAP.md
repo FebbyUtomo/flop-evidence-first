@@ -18,12 +18,12 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
 | flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
 | independent_validation | Independent validation and adoption | 20 | 5 | Ten strongest results are hash-bound to commit-pinned URLs with separate fail-closed ATTEST/ACCEPT states. All external states remain UNVERIFIED. |
-| community | Public education and community activity | 15 | 0 | Bilingual tutorial published and announced from the pinned DID. Points stay 0 until independent adoption evidence exists. |
+| community | Public education and community activity | 15 | 5 | Bilingual tutorial, pinned-DID announcement, and an attributable independent public fork are ledgered below. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 10 | Draft criteria monitoring plus the commit-pinned Sonnet-2 result verifier are ledgered below. |
-| **Total** |  | **100** | **40** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **45** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 40 points
+## Completed evidence ledger — 45 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -117,26 +117,29 @@ Evidence boundary: the offline verifier pins @flop_labs post `210257843964369356
 
 Evidence boundary: ten curated public results are bound to exact artifact hashes, full commits, and commit-pinned URLs. The offline validator rejects altered results, ambiguous URLs, fake status evidence, and self-attestation presented as independent validation. All ten ATTEST and ten ACCEPT states remain `UNVERIFIED`; curation does not manufacture endorsement, eligibility, allocation, or payment.
 
-## Pending evidence ledger — 5 unscored points
-
-### community_tutorial_v1 — Bilingual tutorial and community announcement (5 points)
+### community_tutorial_v1 — Bilingual tutorial and independent community fork (5 points)
 
 - Workstream: `community`
-- Status: `pending`
-- Artifact: `docs/tutorial-bilingual.md`
-- Artifact: `evidence/fixtures/community-announce-receipt.json`
+- Status: `verified`
+- Artifact: `docs/tutorial-bilingual.md` — sha256 `c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2`
+- Artifact: `evidence/fixtures/community-announce-receipt.json` — sha256 `ba27fc52b6f15e137c399da44397f876d9aef3c5f1eb4573c081f84889ecff29`
+- Artifact: `evidence/community-adoption.json` — sha256 `9b5718f03d00ee95ac2cb7b05cb015daa7cdca4f7ceaf84b8b60310b278da58f`
+- Artifact: `community_adoption.py` — sha256 `45f6fe3da1c056b773f15d9dbc68727551259563ef71047dfa37090f35a16a30`
+- Artifact: `tests/test_community_adoption.py` — sha256 `0361f81b838a956d170b08eef8205f8916e97790838fc00f4e66a7a08b21fe53`
 
-The bilingual tutorial and the DID-signed Technocore announcement (seq 11287734) are complete and verifiable, but community adoption evidence is still zero: no external issue, fork, install receipt, or independent feedback exists yet. Until independently attributable adoption is recorded, this tranche earns **0 points**.
+Evidence boundary: GitHub records an attributable public fork by `putrikeme`, a distinct account created in 2022 with prior public repository history. Its branch pins source commit `f31eb692037d68b0cb2089013607230fa32dca95`, whose tutorial bytes match SHA-256 `c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2`. This meets the roadmap's external-adoption gate, but a fork does not prove execution, endorsement, official recognition, eligibility, allocation, claimability, or payment.
+
+## Pending evidence ledger — 0 unscored points
 
 ## Next 5-point tranches
 
-1. **Community adoption evidence (5 points)**
-   - Publish a bilingual tutorial or demo.
-   - Record real, non-Sybil use: issue, fork, installation receipt, or independent feedback.
-
-2. **Independent acceptance upgrade (5 points)**
+1. **Independent acceptance upgrade (5 points)**
    - Obtain exact-result ATTEST or ACCEPT receipts from an attributable independent actor.
    - Verify the actor, receipt URL, and result hash before changing any registry status.
+
+2. **Official contribution route (5 points)**
+   - Complete a concrete task requested by `@flop_labs` or an official FLOP Labs repository.
+   - Preserve the exact request, accepted result, actor, timestamp, URL, and artifact hash.
 
 ## Daily execution rules
 

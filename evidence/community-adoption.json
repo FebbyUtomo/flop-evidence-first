@@ -1,0 +1,43 @@
+{
+  "schema": "nanaz.flop-community-adoption.v1",
+  "observed_at": "2026-09-24T02:02:34Z",
+  "source_repository": "FebbyUtomo/flop-evidence-first",
+  "adoption": {
+    "kind": "github_fork",
+    "actor": "putrikeme",
+    "actor_github_id": 107520232,
+    "actor_account_created_at": "2022-06-15T00:48:37Z",
+    "actor_public_repositories": 5,
+    "fork_repository": "putrikeme/flop-evidence-first",
+    "fork_repository_id": 1382565795,
+    "fork_created_at": "2026-09-23T01:42:44Z",
+    "fork_url": "https://github.com/putrikeme/flop-evidence-first",
+    "github_api_url": "https://api.github.com/repos/putrikeme/flop-evidence-first",
+    "fork": true,
+    "default_branch": "main",
+    "head_commit": "f31eb692037d68b0cb2089013607230fa32dca95",
+    "head_commit_date": "2026-09-23T01:19:46Z",
+    "head_commit_title": "docs: publish bilingual FLOP verification tutorial",
+    "tutorial_path": "docs/tutorial-bilingual.md",
+    "tutorial_blob_sha1": "29f1b71479f92007874d488a85edd28048550445",
+    "tutorial_sha256": "c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2",
+    "tutorial_url": "https://github.com/putrikeme/flop-evidence-first/blob/f31eb692037d68b0cb2089013607230fa32dca95/docs/tutorial-bilingual.md"
+  },
+  "independence_assessment": {
+    "source_owner": "FebbyUtomo",
+    "actor_differs_from_source_owner": true,
+    "account_predates_repository": true,
+    "account_has_prior_public_repository_history": true,
+    "classification": "INDEPENDENT_PUBLIC_ACTOR",
+    "boundary": "A public GitHub fork by a distinct, pre-existing account is attributable adoption evidence. It does not prove the actor ran the code, endorse every claim, or establish official FLOP eligibility, allocation, claimability, payment, or non-Sybil identity beyond these public account indicators."
+  },
+  "official_status": {
+    "flop_labs_recognition": "UNVERIFIED",
+    "arthur_hayes_recognition": "UNVERIFIED",
+    "eligibility": "UNVERIFIED",
+    "allocation": "UNVERIFIED",
+    "claimable": "UNVERIFIED",
+    "claimed": "UNVERIFIED",
+    "paid": "UNVERIFIED"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
-  "updated_at": "2026-09-23",
-  "score": 40,
+  "updated_at": "2026-09-24",
+  "score": 45,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
@@ -9,7 +9,7 @@
     {"id": "evidence", "weight": 20, "score": 10},
     {"id": "flagship_tooling", "weight": 20, "score": 10},
     {"id": "independent_validation", "weight": 20, "score": 5},
-    {"id": "community", "weight": 15, "score": 0},
+    {"id": "community", "weight": 15, "score": 5},
     {"id": "flipt_case_study", "weight": 15, "score": 5},
     {"id": "official_readiness", "weight": 10, "score": 10}
   ],
@@ -137,18 +137,23 @@
       ],
       "status": "verified",
       "evidence": "Commit-pinned offline verification reconciles all five available official Sonnet-2 package files, 6,856 exact DIDs, 97,964 allocated units, settlement, and standings; deterministic negative fixtures fail closed, primary DID is NOT_LISTED, two unavailable manifest artifacts are disclosed, and claimable/claimed/paid remain UNVERIFIED."
-    }
-  ],
-  "pending_tranches": [
+    },
     {
       "id": "community_tutorial_v1",
-      "title": "Bilingual tutorial and community announcement",
+      "title": "Bilingual tutorial and independent community fork",
       "workstream": "community",
-      "date": "2026-09-22",
+      "date": "2026-09-24",
       "points": 5,
-      "artifact": "docs/tutorial-bilingual.md",
-      "status": "pending",
-      "blocker": "No external adoption evidence yet (issues/forks/installs/feedback); scoring requires independently attributable use."
+      "artifacts": [
+        {"path": "docs/tutorial-bilingual.md", "sha256": "c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2"},
+        {"path": "evidence/fixtures/community-announce-receipt.json", "sha256": "ba27fc52b6f15e137c399da44397f876d9aef3c5f1eb4573c081f84889ecff29"},
+        {"path": "evidence/community-adoption.json", "sha256": "9b5718f03d00ee95ac2cb7b05cb015daa7cdca4f7ceaf84b8b60310b278da58f"},
+        {"path": "community_adoption.py", "sha256": "45f6fe3da1c056b773f15d9dbc68727551259563ef71047dfa37090f35a16a30"},
+        {"path": "tests/test_community_adoption.py", "sha256": "0361f81b838a956d170b08eef8205f8916e97790838fc00f4e66a7a08b21fe53"}
+      ],
+      "status": "verified",
+      "evidence": "The published bilingual tutorial and signed announcement are now tied to an attributable public fork by distinct pre-existing GitHub account putrikeme. The fork pins source commit f31eb692037d68b0cb2089013607230fa32dca95 and the exact tutorial SHA-256; offline validation preserves the boundary that a fork proves adoption, not installation, endorsement, eligibility, allocation, or payment."
     }
-  ]
+  ],
+  "pending_tranches": []
 }

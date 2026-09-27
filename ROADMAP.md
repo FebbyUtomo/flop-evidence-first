@@ -16,14 +16,14 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | ID | Workstream | Weight | Current | Evidence / next gate |
 |---|---|---:|---:|---|
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
-| flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate plus pinned-DID receipt verifier, fixtures, docs, and tests are ledgered below. |
+| flagship_tooling | Quality-gated flagship tooling | 20 | 15 | Offline quality gate, pinned-DID receipt verifier, and official Close Call package replay are ledgered below. |
 | independent_validation | Independent validation and adoption | 20 | 5 | Ten strongest results are hash-bound to commit-pinned URLs with separate fail-closed ATTEST/ACCEPT states. All external states remain UNVERIFIED. |
 | community | Public education and community activity | 15 | 5 | Bilingual tutorial, pinned-DID announcement, and an attributable independent public fork are ledgered below. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 10 | Draft criteria monitoring plus the commit-pinned Sonnet-2 result verifier are ledgered below. |
-| **Total** |  | **100** | **45** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **50** | Conservative score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 45 points
+## Completed evidence ledger — 50 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -129,6 +129,22 @@ Evidence boundary: ten curated public results are bound to exact artifact hashes
 
 Evidence boundary: GitHub records an attributable public fork by `putrikeme`, a distinct account created in 2022 with prior public repository history. Its branch pins source commit `f31eb692037d68b0cb2089013607230fa32dca95`, whose tutorial bytes match SHA-256 `c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2`. This meets the roadmap's external-adoption gate, but a fork does not prove execution, endorsement, official recognition, eligibility, allocation, claimability, or payment.
 
+### close_call_package_verifier_v1 — Official Close Call package verifier (5 points)
+
+- Workstream: `flagship_tooling`
+- Status: `verified`
+- Artifact: `close_call_verifier.py` — sha256 `10233f672cfd634adc960fc1549bc401508da2bd16815ec7b5eb6455ab041ae8`
+- Artifact: `tests/test_close_call_verifier.py` — sha256 `cbdb415817a7b06383ee46d45d8e11e8e4bde5777e4d87141796c53e064ad335`
+- Artifact: `docs/close-call-verifier.md` — sha256 `8f896bddb2ded93e5782c32f856ec22ee1ab20a5abfdf4cc050d2f8c642352f3`
+- Artifact: `evidence/close-call-source.json` — sha256 `152d8f485f89c08461197e6f7bb49c6fd5310180108f076a812fe5ccbc83fe49`
+- Artifact: `evidence/fixtures/close-call-official/manifest.json` — sha256 `bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa`
+- Artifact: `evidence/fixtures/close-call-official/close_call_fold.py` — sha256 `19e13cd15dd4e9078b608a94776947bb52bba86367446d0a405c0b05c85173d4`
+- Artifact: `evidence/fixtures/close-call-official/contest.json` — sha256 `f2c08c1388fe7f29b13be01cf4655dcf2f2178aa2df92edac5841d5a021da831`
+- Artifact: `evidence/fixtures/close-call-official/sample-season.jsonl` — sha256 `54c830076d3ee6da71a0093f626be20d97be3fd3784c362b6d4d7e5070911b7b`
+- Artifact: `evidence/fixtures/close-call-official/sample-season.expected.json` — sha256 `3a9ac3b0c1532f36bef29662fa48118978774aca6d30c0a8434584e571db3c90`
+
+Evidence boundary: Arthur Hayes announced the official `close-1` contest in post `2103453504513937720`; FLOP Labs published commit `66c1da36538e4b1c685417d2f66922906b13fea0`, and the live seed pinned manifest SHA-256 `bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa`. The offline verifier checks exact official fold/config/sample bytes and reproduces the full sample result with six owners and exact zero-sum accounting. No DID was registered and no message was signed or posted: registration, mint, settlement, ranking, prize eligibility, allocation, claimability, claim, and payment remain `UNVERIFIED`.
+
 ## Pending evidence ledger — 0 unscored points
 
 ## Next 5-point tranches
@@ -140,6 +156,10 @@ Evidence boundary: GitHub records an attributable public fork by `putrikeme`, a 
 2. **Official contribution route (5 points)**
    - Complete a concrete task requested by `@flop_labs` or an official FLOP Labs repository.
    - Preserve the exact request, accepted result, actor, timestamp, URL, and artifact hash.
+
+3. **Close Call participation receipt upgrade (5 points)**
+   - MANUAL REQUIRED: register one intended DID only if the operator explicitly authorizes key use.
+   - Preserve exact signed registration, referee mint, settled trade, ranking, and any later claim/payment receipts as separate states.
 
 ## Daily execution rules
 

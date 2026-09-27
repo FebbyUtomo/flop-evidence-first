@@ -1,13 +1,13 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
-  "updated_at": "2026-09-24",
-  "score": 45,
+  "updated_at": "2026-09-27",
+  "score": 50,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
   "workstreams": [
     {"id": "evidence", "weight": 20, "score": 10},
-    {"id": "flagship_tooling", "weight": 20, "score": 10},
+    {"id": "flagship_tooling", "weight": 20, "score": 15},
     {"id": "independent_validation", "weight": 20, "score": 5},
     {"id": "community", "weight": 15, "score": 5},
     {"id": "flipt_case_study", "weight": 15, "score": 5},
@@ -153,6 +153,26 @@
       ],
       "status": "verified",
       "evidence": "The published bilingual tutorial and signed announcement are now tied to an attributable public fork by distinct pre-existing GitHub account putrikeme. The fork pins source commit f31eb692037d68b0cb2089013607230fa32dca95 and the exact tutorial SHA-256; offline validation preserves the boundary that a fork proves adoption, not installation, endorsement, eligibility, allocation, or payment."
+    },
+    {
+      "id": "close_call_package_verifier_v1",
+      "title": "Official Close Call package verifier",
+      "workstream": "flagship_tooling",
+      "date": "2026-09-27",
+      "points": 5,
+      "artifacts": [
+        {"path": "close_call_verifier.py", "sha256": "10233f672cfd634adc960fc1549bc401508da2bd16815ec7b5eb6455ab041ae8"},
+        {"path": "tests/test_close_call_verifier.py", "sha256": "cbdb415817a7b06383ee46d45d8e11e8e4bde5777e4d87141796c53e064ad335"},
+        {"path": "docs/close-call-verifier.md", "sha256": "8f896bddb2ded93e5782c32f856ec22ee1ab20a5abfdf4cc050d2f8c642352f3"},
+        {"path": "evidence/close-call-source.json", "sha256": "152d8f485f89c08461197e6f7bb49c6fd5310180108f076a812fe5ccbc83fe49"},
+        {"path": "evidence/fixtures/close-call-official/manifest.json", "sha256": "bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa"},
+        {"path": "evidence/fixtures/close-call-official/close_call_fold.py", "sha256": "19e13cd15dd4e9078b608a94776947bb52bba86367446d0a405c0b05c85173d4"},
+        {"path": "evidence/fixtures/close-call-official/contest.json", "sha256": "f2c08c1388fe7f29b13be01cf4655dcf2f2178aa2df92edac5841d5a021da831"},
+        {"path": "evidence/fixtures/close-call-official/sample-season.jsonl", "sha256": "54c830076d3ee6da71a0093f626be20d97be3fd3784c362b6d4d7e5070911b7b"},
+        {"path": "evidence/fixtures/close-call-official/sample-season.expected.json", "sha256": "3a9ac3b0c1532f36bef29662fa48118978774aca6d30c0a8434584e571db3c90"}
+      ],
+      "status": "verified",
+      "evidence": "Arthur Hayes announced the official close-1 contest, FLOP Labs published commit 66c1da36538e4b1c685417d2f66922906b13fea0, and launch seed sequence 1 pinned manifest bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa. The offline verifier reproduces the official sample fold while all identity-specific participation and reward states remain UNVERIFIED."
     }
   ],
   "pending_tranches": []

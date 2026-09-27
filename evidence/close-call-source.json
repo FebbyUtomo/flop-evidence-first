@@ -1,0 +1,39 @@
+{
+  "schema": "nanaz.close-call-source.v1",
+  "observed_at": "2026-09-27T02:00:00Z",
+  "announcement": {
+    "actor": "Arthur Hayes (@CryptoHayes)",
+    "post_id": "2103453504513937720",
+    "posted_at": "2026-09-25T11:56:10Z",
+    "url": "https://x.com/CryptoHayes/status/2103453504513937720"
+  },
+  "repository": {
+    "owner": "flop-labs",
+    "name": "technocore-close-call-challenge",
+    "commit": "66c1da36538e4b1c685417d2f66922906b13fea0",
+    "commit_url": "https://github.com/flop-labs/technocore-close-call-challenge/commit/66c1da36538e4b1c685417d2f66922906b13fea0",
+    "manifest_url": "https://raw.githubusercontent.com/flop-labs/technocore-close-call-challenge/66c1da36538e4b1c685417d2f66922906b13fea0/manifest.json",
+    "manifest_sha256": "bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa"
+  },
+  "launch_seed": {
+    "room": "d-close1-price",
+    "sequence": 1,
+    "season": "close-1",
+    "package_sha256": "bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa",
+    "price": "226.14",
+    "trade_time": "2026-09-25T11:59:42.666000Z",
+    "trade_id": 626256716983248,
+    "url": "https://technocore.chat/r/d-close1-price"
+  },
+  "lifecycle": {
+    "package_verified": true,
+    "registration": "UNVERIFIED",
+    "minted": "UNVERIFIED",
+    "settled": "UNVERIFIED",
+    "ranked": "UNVERIFIED",
+    "prize_eligible": "UNVERIFIED",
+    "claimable": "UNVERIFIED",
+    "claimed": "UNVERIFIED",
+    "paid": "UNVERIFIED"
+  }
+}

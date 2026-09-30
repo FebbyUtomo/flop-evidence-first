@@ -1,0 +1,40 @@
+{
+  "schema": "nanaz.flop-official-announcements.v1",
+  "captured_at": "2026-09-30",
+  "eligibility_status": "UNVERIFIED",
+  "allocation_status": "UNVERIFIED",
+  "claim_boundary": "This record preserves one official policy-direction announcement. It does not establish identity-specific eligibility, accepted contribution, allocation, claimability, or payment.",
+  "announcements": [
+    {
+      "id": "gpu_agent_work_direction",
+      "source": {
+        "platform": "x",
+        "account": "flop_labs",
+        "post_id": "2105090680314069401",
+        "published_at": "2026-09-30T00:21:43Z",
+        "url": "https://x.com/flop_labs/status/2105090680314069401"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "@CryptoHayes on CryptoWendyO: most crypto projects use their token wrong, and that includes most of the ones he advises.\n\nBitcoin got it right. The only way in was to do the work, or buy from someone who did. Flop Network runs on the same rule: run GPUs or put your agent to work, and that's how you earn $ FLOP.\n\nFrom 19:31 https://t.co/mYx4G8My5A",
+        "authored_text_expanded": "@CryptoHayes on CryptoWendyO: most crypto projects use their token wrong, and that includes most of the ones he advises.\n\nBitcoin got it right. The only way in was to do the work, or buy from someone who did. Flop Network runs on the same rule: run GPUs or put your agent to work, and that's how you earn $ FLOP.\n\nFrom 19:31 https://www.youtube.com/watch?v=dpmyx_rbSFY&t=1171s",
+        "links": [
+          {
+            "original": "https://t.co/mYx4G8My5A",
+            "expanded": "https://www.youtube.com/watch?v=dpmyx_rbSFY&t=1171s",
+            "display": "youtube.com/watch?v=dpmyx_…"
+          }
+        ]
+      },
+      "source_snapshot_sha256": "35269b582839a1ef78efb03401d51c499a924556ea3501c804ee765c6841ce55",
+      "exact_quote": "run GPUs or put your agent to work, and that's how you earn $ FLOP.",
+      "work_lanes": [
+        "GPU_WORK",
+        "AGENT_WORK"
+      ],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "DIRECTIONAL_NOT_ELIGIBILITY_CRITERION"
+    }
+  ]
+}

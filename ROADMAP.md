@@ -8,6 +8,7 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 - Daily operating target: attempt one complete 5-point tranche.
 - Points move only when the named acceptance criteria and evidence exist.
 - Administrative activity, message volume, drafts, pending reviews, and self-claims earn zero points.
+- Under the anti-waste gate, new points require attributable external demand or adoption: an official task, an accepted official-repository contribution, independent exact-artifact use/feedback, or an independent exact-result `ATTEST`/`ACCEPT` receipt.
 - `evidence/progress.json` is the score ledger; every scored tranche names concrete repository artifacts.
 - Official eligibility, allocation, and payment remain separate external decisions.
 
@@ -16,14 +17,14 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 | ID | Workstream | Weight | Current | Evidence / next gate |
 |---|---|---:|---:|---|
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
-| flagship_tooling | Quality-gated flagship tooling | 20 | 15 | Offline quality gate, pinned-DID receipt verifier, and official Close Call package replay are ledgered below. |
-| independent_validation | Independent validation and adoption | 20 | 5 | Ten strongest results are hash-bound to commit-pinned URLs with separate fail-closed ATTEST/ACCEPT states. All external states remain UNVERIFIED. |
+| flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate and pinned-DID receipt verifier are ledgered below. Close Call sample replay is frozen as unscored readiness. |
+| independent_validation | Independent validation and adoption | 20 | 5 | AgentAtlas independently reviewed an exact repository revision with a caution outcome. Execution and ATTEST/ACCEPT remain UNVERIFIED. |
 | community | Public education and community activity | 15 | 5 | Bilingual tutorial, pinned-DID announcement, and an attributable independent public fork are ledgered below. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 10 | Draft criteria monitoring plus the commit-pinned Sonnet-2 result verifier are ledgered below. |
-| **Total** |  | **100** | **50** | Conservative score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **45** | Externally controlled score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 50 points
+## Completed evidence ledger — 45 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -106,16 +107,6 @@ Evidence boundary: the read-only monitor pins five official draft FLOP surfaces,
 
 Evidence boundary: the offline verifier pins @flop_labs post `2102578439643693562` (2026-09-23T01:58:58Z) and official commit `195647a4d85733ecd4862d67dc7bf7a62e673c58`, verifies all five available package files, reconciles 6,856 exact DIDs and 97,964 allocated units across allocations, payouts, settlement, and standings, and fails closed on deterministic tampering. Primary exact-DID lookup is `NOT_LISTED`. The unavailable `allocations.json` and closed referee ledger remain a disclosed replay gap; `claimable`, `claimed`, and `paid` remain `UNVERIFIED`.
 
-### contribution_registry_v1 — Curated contribution evidence registry (5 points)
-
-- Workstream: `independent_validation`
-- Status: `verified`
-- Artifact: `contribution_registry.py` — sha256 `ee62acbc0b39eb1308512e253c0cec764b5d009f46067e582e11507a3ce43a0c`
-- Artifact: `evidence/contributions.json` — sha256 `6ea15b1faccdd6ddd06dc130bc7d8c10acbd9beeb2dbdc07a35f096f51e3066c`
-- Artifact: `docs/contribution-registry.md` — sha256 `18c55a1d8f38a01bf5cf98ad531aacd44ed07b9a7a86268ff4c24a87efc74080`
-- Artifact: `tests/test_contribution_registry.py` — sha256 `b2833adbf199ad2592da58eb838b26f898e6e7a2d838a58a5e85916778d315c0`
-
-Evidence boundary: ten curated public results are bound to exact artifact hashes, full commits, and commit-pinned URLs. The offline validator rejects altered results, ambiguous URLs, fake status evidence, and self-attestation presented as independent validation. All ten ATTEST and ten ACCEPT states remain `UNVERIFIED`; curation does not manufacture endorsement, eligibility, allocation, or payment.
 
 ### community_tutorial_v1 — Bilingual tutorial and independent community fork (5 points)
 
@@ -129,23 +120,31 @@ Evidence boundary: ten curated public results are bound to exact artifact hashes
 
 Evidence boundary: GitHub records an attributable public fork by `putrikeme`, a distinct account created in 2022 with prior public repository history. Its branch pins source commit `f31eb692037d68b0cb2089013607230fa32dca95`, whose tutorial bytes match SHA-256 `c40bfe623d108a82a9820aafbcd6629d3a1fa5c8b196a720ca4bacc0b7029fe2`. This meets the roadmap's external-adoption gate, but a fork does not prove execution, endorsement, official recognition, eligibility, allocation, claimability, or payment.
 
+### external_review_adoption_v1 — Independent exact-revision caution review (5 points)
+
+- Workstream: `independent_validation`
+- Status: `verified`
+- Artifact: `evidence/external-review-adoption.json` — sha256 `3053601363f56ec1673b33010634402dd6cdc0cdff64a5d69ab96bdaf414d9c9`
+
+Evidence boundary: AgentAtlas, a publicly distinct pseudonymous reviewer with its own GitHub repository and public Ed25519 DID, added a `caution` review in external commit [`6cecbe33adc4f25f6374c30c7196e435fa3bf9ab`](https://github.com/aiAgentAtlas/flop-atlas/commit/6cecbe33adc4f25f6374c30c7196e435fa3bf9ab) at `2026-09-14T04:15:49Z`. The record binds its feedback to our exact commit [`7454a83d3e807e6fc3a497b6c31f23cfdc70138a`](https://github.com/FebbyUtomo/flop-evidence-first/commit/7454a83d3e807e6fc3a497b6c31f23cfdc70138a). This is attributable external feedback, including criticism of the Sybil/spam footprint and private-evidence limits—not installation, execution, endorsement, `ATTEST`/`ACCEPT`, official recognition, eligibility, allocation, claimability, claim, or payment.
+
+## Pending evidence ledger — 10 unscored points
+
+### contribution_registry_v1 — Curated contribution evidence registry (5 points)
+
+- Workstream: `independent_validation`
+- Status: `pending`
+- Artifact: `docs/contribution-registry.md`
+
+Blocker: frozen under the external-demand gate. A self-curated registry whose exact-result `ATTEST` and `ACCEPT` states are all `UNVERIFIED` cannot score itself. Cute trick, still circular.
+
 ### close_call_package_verifier_v1 — Official Close Call package verifier (5 points)
 
 - Workstream: `flagship_tooling`
-- Status: `verified`
-- Artifact: `close_call_verifier.py` — sha256 `10233f672cfd634adc960fc1549bc401508da2bd16815ec7b5eb6455ab041ae8`
-- Artifact: `tests/test_close_call_verifier.py` — sha256 `cbdb415817a7b06383ee46d45d8e11e8e4bde5777e4d87141796c53e064ad335`
-- Artifact: `docs/close-call-verifier.md` — sha256 `8f896bddb2ded93e5782c32f856ec22ee1ab20a5abfdf4cc050d2f8c642352f3`
-- Artifact: `evidence/close-call-source.json` — sha256 `152d8f485f89c08461197e6f7bb49c6fd5310180108f076a812fe5ccbc83fe49`
-- Artifact: `evidence/fixtures/close-call-official/manifest.json` — sha256 `bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa`
-- Artifact: `evidence/fixtures/close-call-official/close_call_fold.py` — sha256 `19e13cd15dd4e9078b608a94776947bb52bba86367446d0a405c0b05c85173d4`
-- Artifact: `evidence/fixtures/close-call-official/contest.json` — sha256 `f2c08c1388fe7f29b13be01cf4655dcf2f2178aa2df92edac5841d5a021da831`
-- Artifact: `evidence/fixtures/close-call-official/sample-season.jsonl` — sha256 `54c830076d3ee6da71a0093f626be20d97be3fd3784c362b6d4d7e5070911b7b`
-- Artifact: `evidence/fixtures/close-call-official/sample-season.expected.json` — sha256 `3a9ac3b0c1532f36bef29662fa48118978774aca6d30c0a8434584e571db3c90`
+- Status: `pending`
+- Artifact: `docs/close-call-verifier.md`
 
-Evidence boundary: Arthur Hayes announced the official `close-1` contest in post `2103453504513937720`; FLOP Labs published commit `66c1da36538e4b1c685417d2f66922906b13fea0`, and the live seed pinned manifest SHA-256 `bae09812e25eb6f1369c611f24964f7ea0acafddfc45301a16f33f941296dafa`. The offline verifier checks exact official fold/config/sample bytes and reproduces the full sample result with six owners and exact zero-sum accounting. No DID was registered and no message was signed or posted: registration, mint, settlement, ranking, prize eligibility, allocation, claimability, claim, and payment remain `UNVERIFIED`.
-
-## Pending evidence ledger — 0 unscored points
+Blocker: frozen under the external-demand gate. Replaying an official sample without identity-specific participation, acceptance, or a receipt is readiness, not external adoption.
 
 ## Next 5-point tranches
 

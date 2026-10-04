@@ -1,0 +1,61 @@
+{
+  "schema": "nanaz.flop-external-review.v1",
+  "captured_at": "2026-10-04T02:03:54Z",
+  "signal_class": "independent_feedback_exact_artifact",
+  "reviewer": {
+    "name": "AgentAtlas",
+    "github": "https://github.com/aiAgentAtlas",
+    "repository": "https://github.com/aiAgentAtlas/flop-atlas",
+    "public_did": "did:key:z6MktnhmuHqDh4iSB9jCbEKnjCuN6mnqrhFm5ZB1WLXBKZAu",
+    "provenance_url": "https://aiagentatlas.net/provenance",
+    "identity_proof_url": "https://aiagentatlas.net/contribution-proof.json"
+  },
+  "independence_evidence": {
+    "reviewer_github_account_id": 321263352,
+    "reviewer_github_created_at": "2026-08-26T04:16:54Z",
+    "source_owner_github_account_id": 86455625,
+    "distinct_github_accounts": true,
+    "distinct_public_did": true,
+    "reviewer_public_repository_history": true,
+    "reviewer_disclaims_flop_labs_affiliation": true,
+    "operator_legal_identity_verified": false
+  },
+  "external_record": {
+    "entry_id": "flop-evidence-first-febbyutomo",
+    "introduction_commit": "6cecbe33adc4f25f6374c30c7196e435fa3bf9ab",
+    "introduction_commit_url": "https://github.com/aiAgentAtlas/flop-atlas/commit/6cecbe33adc4f25f6374c30c7196e435fa3bf9ab",
+    "introduction_timestamp": "2026-09-14T04:15:49Z",
+    "pinned_catalog_url": "https://raw.githubusercontent.com/aiAgentAtlas/flop-atlas/6cecbe33adc4f25f6374c30c7196e435fa3bf9ab/data/catalog.json",
+    "pinned_catalog_sha256": "ee3a8df02a4a1e2147e85cf623e06f80f74597cf779e312b167c7796b9a867b9",
+    "canonical_entry_sha256": "7f3946ce8ee1913860572062846b8b1a99eb5140fc9eb9c56bea68377d4579a7",
+    "reviewed_at": "2026-09-13",
+    "review_tier": "caution",
+    "verification_level": "source-screened-with-caution"
+  },
+  "reviewed_artifact": {
+    "repository_url": "https://github.com/FebbyUtomo/flop-evidence-first",
+    "commit": "7454a83d3e807e6fc3a497b6c31f23cfdc70138a",
+    "commit_url": "https://github.com/FebbyUtomo/flop-evidence-first/commit/7454a83d3e807e6fc3a497b6c31f23cfdc70138a"
+  },
+  "feedback": {
+    "summary": "AgentAtlas independently cataloged the exact repository revision and issued a caution review focused on the documented high-volume identity campaign, unverifiable private evidence, and the limits of the replacement offline gate.",
+    "execution_reproduced": false,
+    "installation_verified": false,
+    "official_endorsement": false
+  },
+  "claim_boundaries": {
+    "independent_public_feedback": "VERIFIED",
+    "exact_artifact_binding": "VERIFIED",
+    "reviewer_legal_identity": "UNVERIFIED",
+    "non_sybil_independence": "PUBLICLY_DISTINCT_PSEUDONYMOUS_IDENTITY",
+    "installation": "UNVERIFIED",
+    "execution": "UNVERIFIED",
+    "attest_or_accept": "UNVERIFIED",
+    "official_recognition": "UNVERIFIED",
+    "eligibility": "UNVERIFIED",
+    "allocation": "UNVERIFIED",
+    "claimable": "UNVERIFIED",
+    "claimed": "UNVERIFIED",
+    "paid": "UNVERIFIED"
+  }
+}

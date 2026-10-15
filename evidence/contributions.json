@@ -72,7 +72,7 @@
       "id": "official_criteria_monitor",
       "title": "Read-only official FLOP criteria drift monitor",
       "category": "readiness",
-      "result": {"path": "criteria_monitor.py", "sha256": "82154c5220b8dc17eef97b1ae0723932b63ded76a7d52a5bcf878c947e94e13d", "commit": "3b4fa595ce9aee5cbd596ba523e0d9cfab0c2ad7", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/3b4fa595ce9aee5cbd596ba523e0d9cfab0c2ad7/criteria_monitor.py"},
+      "result": {"path": "criteria_monitor.py", "sha256": "4f8054cd88e6909080f9f925089ab14b38e7684cb42e5e92b35086ead87e6fdf", "commit": "db74b1df76146fa3f2a8b94d355002053ed2e81d", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/db74b1df76146fa3f2a8b94d355002053ed2e81d/criteria_monitor.py"},
       "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
       "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
     },

@@ -16,12 +16,31 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 
-SCHEMA = "nanaz.flop-official-criteria.v1"
+SCHEMA = "nanaz.flop-official-criteria.v2"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ID_RE = re.compile(r"^[a-z][a-z0-9_]{1,63}$")
 SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
 ALLOWED_HOSTS = {"flop.finance", "ask.flop.finance"}
 USER_AGENT = "flop-criteria-monitor/1.0"
+EXPECTED_SOURCE_URLS = {
+    "teaser": "https://flop.finance/teaser/",
+    "yellowpaper": "https://flop.finance/intro/yellowpaper/",
+    "agent": "https://flop.finance/intro/agent",
+    "miner": "https://flop.finance/intro/miner",
+    "protocol_parameters": "https://ask.flop.finance/docs/protocol-parameters",
+    "testnet": "https://flop.finance/testnet/",
+    "airdrop": "https://flop.finance/airdrop/",
+}
+EXPECTED_CONFLICT_IDS = {"agent_unlock_surface_drift", "technocore_vs_settled_compute"}
+PINNED_YELLOWPAPER = {
+    "version": "0.5.0-draft",
+    "status": "DRAFT",
+    "commit": "70e691c758e53eed17a016a02b0a2ae1200d3744",
+    "tree": "59657ba8775ad27ff1a4e2245a18d6ebcccb8559",
+    "source_commit": "5e6e24279",
+    "published_at": "2026-10-13T06:38:47Z",
+    "url": "https://github.com/flop-labs/yellowpaper/commit/70e691c758e53eed17a016a02b0a2ae1200d3744",
+}
 
 
 class ValidationError(ValueError):
@@ -31,6 +50,19 @@ class ValidationError(ValueError):
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise ValidationError(message)
+
+
+def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValidationError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def loads_strict(text: str) -> Any:
+    return json.loads(text, object_pairs_hook=reject_duplicate_keys)
 
 
 class VisibleTextParser(HTMLParser):
@@ -79,7 +111,7 @@ def validate_manifest(data: Any) -> dict[str, Any]:
     require(type(data) is dict, "manifest must be an object")
     expected_top = {
         "schema", "captured_at", "allocation_status", "claim_boundary",
-        "sources", "known_conflicts",
+        "yellowpaper_pin", "sources", "known_conflicts",
     }
     require(set(data) == expected_top, "manifest keys mismatch")
     require(data["schema"] == SCHEMA, "unsupported schema")
@@ -90,8 +122,13 @@ def validate_manifest(data: Any) -> dict[str, Any]:
     require(type(boundary) is str and "does not establish" in boundary and "allocation" in boundary,
             "claim boundary is incomplete")
 
+    pin = data["yellowpaper_pin"]
+    require(type(pin) is dict and set(pin) == set(PINNED_YELLOWPAPER),
+            "yellowpaper_pin keys mismatch")
+    require(pin == PINNED_YELLOWPAPER, "yellowpaper_pin does not match the reviewed draft revision")
+
     raw_sources = data["sources"]
-    require(type(raw_sources) is list and len(raw_sources) >= 3, "at least three official sources required")
+    require(type(raw_sources) is list and len(raw_sources) == 7, "exactly seven official sources required")
     sources = cast(list[Any], raw_sources)
     source_ids: set[str] = set()
     urls: set[str] = set()
@@ -123,6 +160,9 @@ def validate_manifest(data: Any) -> dict[str, Any]:
                 f"sources[{index}] marker invalid")
         require(len(markers) == len(set(markers)), f"sources[{index}] duplicate marker")
         source_by_id[ident] = source
+    require(source_ids == set(EXPECTED_SOURCE_URLS), "official source id set mismatch")
+    require(all(source_by_id[ident]["url"] == url for ident, url in EXPECTED_SOURCE_URLS.items()),
+            "official source URL set mismatch")
 
     raw_conflicts = data["known_conflicts"]
     require(type(raw_conflicts) is list, "known_conflicts must be an array")
@@ -137,20 +177,27 @@ def validate_manifest(data: Any) -> dict[str, Any]:
                 f"known_conflicts[{index}].id invalid")
         require(ident not in conflict_ids, f"duplicate conflict id: {ident}")
         conflict_ids.add(ident)
-        ids = conflict["source_ids"]
-        markers = conflict["markers"]
-        require(type(ids) is list and len(ids) == 2 and len(set(ids)) == 2,
+        raw_ids = conflict["source_ids"]
+        raw_markers = conflict["markers"]
+        require(type(raw_ids) is list and all(type(item) is str for item in raw_ids),
                 f"known_conflicts[{index}].source_ids invalid")
-        require(type(markers) is list and len(markers) == 2,
+        require(type(raw_markers) is list and all(type(item) is str for item in raw_markers),
                 f"known_conflicts[{index}].markers invalid")
-        for source_id, marker in zip(ids, markers):
+        ids = cast(list[str], raw_ids)
+        markers = cast(list[str], raw_markers)
+        require(1 <= len(ids) <= 2 and len(set(ids)) == len(ids),
+                f"known_conflicts[{index}].source_ids invalid")
+        require(len(markers) == 2, f"known_conflicts[{index}].markers invalid")
+        for source_id in ids:
             require(source_id in source_by_id, f"unknown conflict source: {source_id}")
-            require(marker in source_by_id[source_id]["required_markers"],
-                    f"conflict marker is not pinned by source: {marker}")
+        for marker in markers:
+            require(any(marker in source_by_id[source_id]["required_markers"] for source_id in ids),
+                    f"conflict marker is not pinned by listed sources: {marker}")
         require(conflict["status"] == "UNRESOLVED_DRAFT_CONFLICT",
                 f"known_conflicts[{index}].status invalid")
         require(type(conflict["explanation"]) is str and len(conflict["explanation"].strip()) >= 40,
                 f"known_conflicts[{index}].explanation invalid")
+    require(conflict_ids == EXPECTED_CONFLICT_IDS, "required draft conflict set mismatch")
     return cast(dict[str, Any], data)
 
 
@@ -183,6 +230,7 @@ def evaluate(data: Any, fetcher: Callable[[str], str] = fetch_visible_text) -> d
         "changed_sources": changed_sources,
         "material_changes": material_changes,
         "known_draft_conflicts": [item["id"] for item in manifest["known_conflicts"]],
+        "yellowpaper_commit": manifest["yellowpaper_pin"]["commit"],
         "allocation_status": "UNVERIFIED",
     }
 
@@ -197,7 +245,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--manifest-only", action="store_true")
     args = parser.parse_args(argv)
     try:
-        data = json.loads(args.manifest.read_text(encoding="utf-8"))
+        data = loads_strict(args.manifest.read_text(encoding="utf-8"))
         if args.manifest_only:
             manifest = validate_manifest(data)
             result = {
@@ -205,6 +253,7 @@ def main(argv: list[str] | None = None) -> int:
                 "status": "manifest_valid",
                 "sources": len(manifest["sources"]),
                 "known_draft_conflicts": len(manifest["known_conflicts"]),
+                "yellowpaper_commit": manifest["yellowpaper_pin"]["commit"],
                 "allocation_status": "UNVERIFIED",
             }
             print(json.dumps(result, sort_keys=True))

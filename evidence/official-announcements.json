@@ -1,9 +1,9 @@
 {
-  "schema": "nanaz.flop-official-announcements.v1",
-  "captured_at": "2026-09-30",
+  "schema": "nanaz.flop-official-announcements.v2",
+  "captured_at": "2026-10-15",
   "eligibility_status": "UNVERIFIED",
   "allocation_status": "UNVERIFIED",
-  "claim_boundary": "This record preserves one official policy-direction announcement. It does not establish identity-specific eligibility, accepted contribution, allocation, claimability, or payment.",
+  "claim_boundary": "This record preserves official directional and preview announcements. It does not establish identity-specific eligibility, accepted contribution, allocation, claimability, or payment.",
   "announcements": [
     {
       "id": "gpu_agent_work_direction",
@@ -27,14 +27,154 @@
       },
       "source_snapshot_sha256": "35269b582839a1ef78efb03401d51c499a924556ea3501c804ee765c6841ce55",
       "exact_quote": "run GPUs or put your agent to work, and that's how you earn $ FLOP.",
-      "work_lanes": [
-        "GPU_WORK",
-        "AGENT_WORK"
-      ],
+      "work_lanes": ["GPU_WORK", "AGENT_WORK"],
+      "required_markers": [],
+      "quoted_post_ids": [],
+      "media": [],
       "deadline": null,
       "linked_artifact": null,
       "exact_identity_receipt": null,
       "state": "DIRECTIONAL_NOT_ELIGIBILITY_CRITERION"
+    },
+    {
+      "id": "kol_leaderboard_preview",
+      "source": {
+        "platform": "x",
+        "account": "CryptoHayes",
+        "post_id": "2110624608890282056",
+        "published_at": "2026-10-15T06:51:34Z",
+        "url": "https://x.com/CryptoHayes/status/2110624608890282056"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "KOL Leaderboard.\n\nSee the weekly FLOP payout and where you stand vs. others.",
+        "authored_text_expanded": "KOL Leaderboard.\n\nSee the weekly FLOP payout and where you stand vs. others.",
+        "links": []
+      },
+      "source_snapshot_sha256": "50428da86308fd92f80a0246bfda9defe75842d0d99019ba30d68cc3aa805855",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "PROVISIONAL · SAMPLE DATA",
+        "Weekly payout pool: To be announced",
+        "shared among the top public KOLs in proportion to certified work",
+        "Interactive demo with fictional identities and balances"
+      ],
+      "quoted_post_ids": [],
+      "media": [
+        {
+          "url": "https://pbs.twimg.com/media/HUpwzmRakAAas2L.jpg",
+          "sha256": "3f8c3276b76706e9ef09ae88bf05203fcbc1226e3098bef4b3e78e534560f987",
+          "bytes": 98525,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "PREVIEW_PROVISIONAL_INACTIVE"
+    },
+    {
+      "id": "kol_join_preview",
+      "source": {
+        "platform": "x",
+        "account": "CryptoHayes",
+        "post_id": "2110624611604037995",
+        "published_at": "2026-10-15T06:51:35Z",
+        "url": "https://x.com/CryptoHayes/status/2110624611604037995"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "Anyone can join as a KOL and earn FLOP.\n\nGive us your email, create a wallet, and connect your socials (optional).",
+        "authored_text_expanded": "Anyone can join as a KOL and earn FLOP.\n\nGive us your email, create a wallet, and connect your socials (optional).",
+        "links": []
+      },
+      "source_snapshot_sha256": "cb5cd712a208551a649aaa81f032e61f51eb388c2f5f27dd2f718f573a371b56",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "PROVISIONAL · SAMPLE DATA",
+        "Verify at least one handle",
+        "connect your socials (optional)",
+        "Email, wallet signing, social verification and funding are simulated"
+      ],
+      "quoted_post_ids": [],
+      "media": [
+        {
+          "url": "https://pbs.twimg.com/media/HUpxM84bQAAjoYx.jpg",
+          "sha256": "3886d6278f84bbcb3dacaf4a03dda280ef2eabfe323a2ca0bae9196b3e22c9cf",
+          "bytes": 85335,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "PREVIEW_PROVISIONAL_INACTIVE"
+    },
+    {
+      "id": "kol_referral_preview",
+      "source": {
+        "platform": "x",
+        "account": "CryptoHayes",
+        "post_id": "2110624614233845768",
+        "published_at": "2026-10-15T06:51:36Z",
+        "url": "https://x.com/CryptoHayes/status/2110624614233845768"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "Finally, get your unique referral link and create engaging content. Your followers that create a wallets via that link are bound to you, and we track their activity on the network and reward you. Your followers are auto-enrolled in a weekly FLOP lottery.",
+        "authored_text_expanded": "Finally, get your unique referral link and create engaging content. Your followers that create a wallets via that link are bound to you, and we track their activity on the network and reward you. Your followers are auto-enrolled in a weekly FLOP lottery.",
+        "links": []
+      },
+      "source_snapshot_sha256": "865db5f3898144a0a40a549bf766190395117bcea437f4495cfe5fcc67601568",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "PROVISIONAL · SAMPLE DATA",
+        "Signup is simulated",
+        "Payouts and the work-weighted lottery are inactive",
+        "period boundaries, eligibility and reward caps still need agreement",
+        "No real identity has been verified"
+      ],
+      "quoted_post_ids": [],
+      "media": [
+        {
+          "url": "https://pbs.twimg.com/media/HUpxns1aoAEULkY.jpg",
+          "sha256": "8d6ce76b4b4d1b10703e572e43f7a53e2af6066bb9aff8b064b0e2ae37427f16",
+          "bytes": 97642,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "PREVIEW_PROVISIONAL_INACTIVE"
+    },
+    {
+      "id": "kol_official_quote_preview",
+      "source": {
+        "platform": "x",
+        "account": "flop_labs",
+        "post_id": "2110628169476981128",
+        "published_at": "2026-10-15T07:05:43Z",
+        "url": "https://x.com/flop_labs/status/2110628169476981128"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "Preview of the upcoming KOL leaderboard",
+        "authored_text_expanded": "Preview of the upcoming KOL leaderboard",
+        "links": []
+      },
+      "source_snapshot_sha256": "cb39b221f81324c227261ab03d476b6628efb1942af3dc80c05758905064b309",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "Preview of the upcoming KOL leaderboard",
+        "PROVISIONAL · SAMPLE DATA"
+      ],
+      "quoted_post_ids": ["2110624608890282056"],
+      "media": [],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "PREVIEW_PROVISIONAL_INACTIVE"
     }
   ]
 }

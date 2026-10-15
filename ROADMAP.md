@@ -83,12 +83,12 @@ Evidence boundary: six immutable Arc Testnet transaction references support grad
 
 - Workstream: `official_readiness`
 - Status: `verified`
-- Artifact: `criteria_monitor.py` — sha256 `82154c5220b8dc17eef97b1ae0723932b63ded76a7d52a5bcf878c947e94e13d`
-- Artifact: `tests/test_criteria_monitor.py` — sha256 `7ae1855f7b8e1632123005e5622b5cad222080d9cbfb676d89074af61acf5e68`
-- Artifact: `evidence/official-criteria.json` — sha256 `55019230bcefc786dd01e142a65bd192f72383d2f58860b2782a41d7cdc2cd78`
-- Artifact: `docs/official-criteria-monitor.md` — sha256 `ae69c6ce7367ac0cf2c86ca3a95b26d55f8e63008e648b2899e7f06805dedee2`
+- Artifact: `criteria_monitor.py` — sha256 `4f8054cd88e6909080f9f925089ab14b38e7684cb42e5e92b35086ead87e6fdf`
+- Artifact: `tests/test_criteria_monitor.py` — sha256 `95a2f5d7fedc51bdcee19c2dcb65bf28c21efc37acbf7ce5b71cd9f3b4d5263b`
+- Artifact: `evidence/official-criteria.json` — sha256 `42cb1fe2cd3a82a2b05996e1f0203b2677c2a9ba9b433d65d6962fdf152fa00a`
+- Artifact: `docs/official-criteria-monitor.md` — sha256 `6d9c64d36e7510b05222faa976ab363ad3840b7b0d63306aba65acef63919517`
 
-Evidence boundary: the read-only monitor pins five official draft FLOP surfaces, detects content and material-marker drift, preserves two unresolved official contradictions, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
+Evidence boundary: the read-only monitor pins seven official draft FLOP surfaces plus Yellow Paper commit `70e691c`, detects content and material-marker drift, preserves the unresolved Technocore-vs-settled-compute and agent-unlock conflicts, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
 
 ### sonnet_results_verifier_v1 — Sonnet-2 result and allocation verifier (5 points)
 

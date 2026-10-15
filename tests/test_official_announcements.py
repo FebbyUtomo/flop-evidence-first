@@ -4,7 +4,9 @@ import importlib.util
 import json
 import subprocess
 import sys
+import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 
@@ -22,16 +24,55 @@ class OfficialAnnouncementsTests(unittest.TestCase):
     def manifest(self):
         return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
-    def test_valid_directional_announcement(self):
+    def test_valid_multi_announcement_manifest(self):
         result = official_announcements.validate(self.manifest())
-        self.assertEqual(result["announcements"], 1)
+        self.assertEqual(result["announcements"], 5)
         self.assertEqual(result["work_lanes"], ["AGENT_WORK", "GPU_WORK"])
+        self.assertEqual(result["states"], {
+            "DIRECTIONAL_NOT_ELIGIBILITY_CRITERION": 1,
+            "PREVIEW_PROVISIONAL_INACTIVE": 4,
+        })
         self.assertEqual(result["eligibility_status"], "UNVERIFIED")
         self.assertEqual(result["allocation_status"], "UNVERIFIED")
 
+    def test_kol_preview_pins_posts_media_and_fail_closed_markers(self):
+        data = self.manifest()
+        by_id = {item["id"]: item for item in data["announcements"]}
+        self.assertEqual(set(by_id), {
+            "gpu_agent_work_direction",
+            "kol_leaderboard_preview",
+            "kol_join_preview",
+            "kol_referral_preview",
+            "kol_official_quote_preview",
+        })
+        expected_posts = {
+            "kol_leaderboard_preview": "2110624608890282056",
+            "kol_join_preview": "2110624611604037995",
+            "kol_referral_preview": "2110624614233845768",
+            "kol_official_quote_preview": "2110628169476981128",
+        }
+        for ident, post_id in expected_posts.items():
+            item = by_id[ident]
+            self.assertEqual(item["source"]["post_id"], post_id)
+            self.assertEqual(item["state"], "PREVIEW_PROVISIONAL_INACTIVE")
+            self.assertIsNone(item["deadline"])
+            self.assertIsNone(item["exact_identity_receipt"])
+        markers = set(by_id["kol_leaderboard_preview"]["required_markers"])
+        self.assertIn("PROVISIONAL · SAMPLE DATA", markers)
+        self.assertIn("Weekly payout pool: To be announced", markers)
+        referral_markers = set(by_id["kol_referral_preview"]["required_markers"])
+        self.assertIn("Payouts and the work-weighted lottery are inactive", referral_markers)
+        self.assertIn("period boundaries, eligibility and reward caps still need agreement", referral_markers)
+        self.assertEqual(
+            by_id["kol_official_quote_preview"]["quoted_post_ids"],
+            ["2110624608890282056"],
+        )
+        media = by_id["kol_leaderboard_preview"]["media"]
+        self.assertEqual(media[0]["sha256"], "3f8c3276b76706e9ef09ae88bf05203fcbc1226e3098bef4b3e78e534560f987")
+
     def test_rejects_eligibility_promotion_without_artifact_or_receipt(self):
         data = self.manifest()
-        data["announcements"][0]["state"] = "ELIGIBLE"
+        data["announcements"][1]["state"] = "ELIGIBLE"
         with self.assertRaises(official_announcements.ValidationError):
             official_announcements.validate(data)
 
@@ -46,7 +87,7 @@ class OfficialAnnouncementsTests(unittest.TestCase):
         with self.assertRaises(official_announcements.ValidationError):
             official_announcements.validate(data)
 
-    def test_rejects_post_quote_url_and_lane_tampering(self):
+    def test_rejects_post_quote_url_lane_and_preview_tampering(self):
         mutations = []
         data = self.manifest()
         data["announcements"][0]["source"]["post_id"] = "2105090680314069402"
@@ -66,19 +107,26 @@ class OfficialAnnouncementsTests(unittest.TestCase):
         data = self.manifest()
         data["announcements"][0]["source"]["account"] = "example"
         mutations.append(data)
+        data = self.manifest()
+        data["announcements"][1]["required_markers"].remove("PROVISIONAL · SAMPLE DATA")
+        mutations.append(data)
+        data = self.manifest()
+        data["announcements"][3]["deadline"] = "2026-09-08T00:00:00Z"
+        mutations.append(data)
+        data = self.manifest()
+        data["announcements"][1]["media"][0]["sha256"] = "0" * 64
+        mutations.append(data)
         for mutation in mutations:
             with self.subTest(mutation=mutation):
                 with self.assertRaises(official_announcements.ValidationError):
                     official_announcements.validate(mutation)
 
-    def test_source_snapshot_digest_is_recomputed(self):
+    def test_source_snapshot_digests_are_recomputed(self):
         data = self.manifest()
-        item = data["announcements"][0]
-        canonical = official_announcements.canonical_snapshot(item["source_snapshot"])
-        self.assertEqual(hashlib.sha256(canonical).hexdigest(), item["source_snapshot_sha256"])
-        item["source_snapshot"]["authored_text_expanded"] = item["source_snapshot"]["authored_text_expanded"].replace(
-            "From 19:31", "From 19:32"
-        )
+        for item in data["announcements"]:
+            canonical = official_announcements.canonical_snapshot(item["source_snapshot"])
+            self.assertEqual(hashlib.sha256(canonical).hexdigest(), item["source_snapshot_sha256"])
+        data["announcements"][1]["source_snapshot"]["authored_text_raw"] += " altered"
         with self.assertRaises(official_announcements.ValidationError):
             official_announcements.validate(data)
 
@@ -91,6 +139,13 @@ class OfficialAnnouncementsTests(unittest.TestCase):
             data = self.manifest()
             data["announcements"][0][field] = value
             with self.subTest(field=field):
+                with self.assertRaises(official_announcements.ValidationError):
+                    official_announcements.validate(data)
+
+    def test_rejects_missing_local_media_evidence(self):
+        data = self.manifest()
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(official_announcements, "MEDIA_DIR", Path(tmp)):
                 with self.assertRaises(official_announcements.ValidationError):
                     official_announcements.validate(data)
 

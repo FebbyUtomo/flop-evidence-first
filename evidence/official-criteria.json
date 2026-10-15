@@ -1,19 +1,28 @@
 {
-  "schema": "nanaz.flop-official-criteria.v1",
-  "captured_at": "2026-09-22",
+  "schema": "nanaz.flop-official-criteria.v2",
+  "captured_at": "2026-10-15",
   "allocation_status": "UNVERIFIED",
   "claim_boundary": "This snapshot monitors official draft sources and detects drift. It does not establish identity-specific eligibility, allocation, claimability, payment, or token ownership.",
+  "yellowpaper_pin": {
+    "version": "0.5.0-draft",
+    "status": "DRAFT",
+    "commit": "70e691c758e53eed17a016a02b0a2ae1200d3744",
+    "tree": "59657ba8775ad27ff1a4e2245a18d6ebcccb8559",
+    "source_commit": "5e6e24279",
+    "published_at": "2026-10-13T06:38:47Z",
+    "url": "https://github.com/flop-labs/yellowpaper/commit/70e691c758e53eed17a016a02b0a2ae1200d3744"
+  },
   "sources": [
     {
       "id": "teaser",
       "url": "https://flop.finance/teaser/",
       "authority": "official_provisional_overview",
-      "baseline_sha256": "bf8704d8e83f5e3b0fe07f067b5ea239cda90dbb5a22a4c415a4824f2b175173",
+      "baseline_sha256": "7bab263102a6c9501b037eb339f3005b51535a4e267c8eee9663eeaab539eaaa",
       "required_markers": [
         "The figures in this document are provisional",
-        "Yellow Paper is the definitive specification",
-        "Flop Testnet is planned for Q4 2026",
-        "Agents — claim a test-token faucet",
+        "The Yellow Paper is the definitive specification, and it is not yet final",
+        "Testnet Q4 2026",
+        "Agents — claim a test-token faucet and spend it on inference",
         "After the fifth halving"
       ]
     },
@@ -21,29 +30,30 @@
       "id": "yellowpaper",
       "url": "https://flop.finance/intro/yellowpaper/",
       "authority": "official_draft_normative_specification",
-      "baseline_sha256": "d54dfaf4323aaafbebe9777bc9627f9d824d426fdc04d48d8db11d4be8982382",
+      "baseline_sha256": "1a9454f25932f82f19beb5e67fc0ba59bd0d75886bb6a75dd9c784de153f691a",
       "required_markers": [
-        "Draft — the normative specification of the protocol",
-        "Implementation status (what is built vs. designed)",
-        "Open Specification Items"
+        "Normative specification of the FLOP protocol",
+        "Version 0.5.0 (draft)",
+        "Implementation status is out of band",
+        "Appendix E — Open Specification Items"
       ]
     },
     {
       "id": "agent",
       "url": "https://flop.finance/intro/agent",
       "authority": "official_draft_role_guide",
-      "baseline_sha256": "a7e2b4220b225490099faf2e4e6cf58f0911903ed5c9784b5cbbf089204a757a",
+      "baseline_sha256": "7478913da5c59c218fde74181611388d83f3c482f19ddc905ca872615753f658",
       "required_markers": [
         "Compute buyer · Draft whitepaper",
-        "Every 3 FLOP of inference fees unlocks 1 airdropped FLOP",
-        "locked to inference spend or stake delegation"
+        "spend limits enforced on-chain",
+        "When it becomes liquid is not yet set"
       ]
     },
     {
       "id": "miner",
       "url": "https://flop.finance/intro/miner",
       "authority": "official_draft_role_guide",
-      "baseline_sha256": "25763364baa2365e3e6a7a20728d076207c8950d9716cdf55e7c94d8821d687c",
+      "baseline_sha256": "c97e9bb8d93b57d5a284093b2c8686e9b1cef20fe9e621ff1c544fced75d4d96",
       "required_markers": [
         "Compute provider · Draft whitepaper",
         "Miner reward pool 75%",
@@ -55,30 +65,61 @@
       "id": "protocol_parameters",
       "url": "https://ask.flop.finance/docs/protocol-parameters",
       "authority": "official_draft_parameter_reference",
-      "baseline_sha256": "7bf40495c8e10bf68c74c2ac1db6971c0fd20ca50ddd092f4a2fce592322e28d",
+      "baseline_sha256": "09d17b36ee7039852f2f52da7d138a5cc69046fb28a790a1b6f83aba28709272",
       "required_markers": [
-        "Status Draft whitepaper and draft design",
-        "Testnet miner pool 993,384,000 FLOP",
-        "Agent airdrop unlock ratio 3:1",
-        "Miner share 90%",
-        "Number of halvings 6"
+        "Draft whitepaper and draft design",
+        "Testnet miner pool 1,200,000,000 FLOP",
+        "Agent airdrop release Not yet set",
+        "Miner share 75%",
+        "Number of halvings 5"
+      ]
+    },
+    {
+      "id": "testnet",
+      "url": "https://flop.finance/testnet/",
+      "authority": "official_provisional_testnet_rules",
+      "baseline_sha256": "4d5f0f3e99caff945934b71938e4c5fb8c25ab3cb253d866112517471b189e06",
+      "required_markers": [
+        "Dates and rules are provisional",
+        "published, finalized block height",
+        "lodge a dispute within the stated window",
+        "Purchase inference, or transact with other agents on technocore.chat",
+        "compute purchased in settled sessions",
+        "One participant, one score",
+        "Independent demand only",
+        "wallets under common control are scored as a single participant"
+      ]
+    },
+    {
+      "id": "airdrop",
+      "url": "https://flop.finance/airdrop/",
+      "authority": "official_draft_airdrop_rules",
+      "baseline_sha256": "35d42f97ac51c696927819d45234a1749240961ab81d76c51b25a1b673eb52f1",
+      "required_markers": [
+        "These terms are a draft",
+        "4,400,000,000 (24.3%)",
+        "Compute purchased on the testnet",
+        "There is no claim window and no deadline",
+        "Nothing liquid",
+        "Every 3 $FLOP of the locked balance spent in settled sessions unlocks 1 $FLOP",
+        "There is no end date"
       ]
     }
   ],
   "known_conflicts": [
     {
-      "id": "halving_count_drift",
-      "source_ids": ["teaser", "protocol_parameters"],
-      "markers": ["After the fifth halving", "Number of halvings 6"],
+      "id": "agent_unlock_surface_drift",
+      "source_ids": ["protocol_parameters", "airdrop"],
+      "markers": ["Agent airdrop release Not yet set", "Every 3 $FLOP of the locked balance spent in settled sessions unlocks 1 $FLOP"],
       "status": "UNRESOLVED_DRAFT_CONFLICT",
-      "explanation": "The provisional teaser describes a fifth-halving floor while the parameter reference states six halvings. No eligibility inference is made from either value."
+      "explanation": "The protocol-parameter summary says the agent release is not yet set while the dedicated draft airdrop page specifies a 3:1 settled-session spend-to-unlock rule. Neither is promoted to a final eligibility or release guarantee."
     },
     {
-      "id": "miner_reward_share_drift",
-      "source_ids": ["miner", "protocol_parameters"],
-      "markers": ["Miner reward pool 75%", "Miner share 90%"],
+      "id": "technocore_vs_settled_compute",
+      "source_ids": ["testnet"],
+      "markers": ["Purchase inference, or transact with other agents on technocore.chat", "compute purchased in settled sessions"],
       "status": "UNRESOLVED_DRAFT_CONFLICT",
-      "explanation": "Two current official draft surfaces publish different miner block-reward shares. The monitor preserves the conflict instead of choosing a convenient number."
+      "explanation": "The onboarding description permits Technocore transactions, but the scoring section credits agents only for compute purchased in settled sessions. Until final rules define any Technocore credit path, Technocore activity is not treated as score-eligible."
     }
   ]
 }

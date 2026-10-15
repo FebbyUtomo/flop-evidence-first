@@ -4,6 +4,7 @@ import importlib.util
 import json
 import subprocess
 import sys
+import tempfile
 
 import unittest
 from pathlib import Path
@@ -35,9 +36,52 @@ class CriteriaMonitorTests(unittest.TestCase):
         data = self.manifest()
         result = criteria_monitor.evaluate(data, self.fetched(data).__getitem__)
         self.assertEqual(result["status"], "unchanged")
-        self.assertEqual(result["sources_checked"], 5)
+        self.assertEqual(result["sources_checked"], 7)
         self.assertEqual(result["material_changes"], [])
         self.assertEqual(result["allocation_status"], "UNVERIFIED")
+        self.assertEqual(result["yellowpaper_commit"], "70e691c758e53eed17a016a02b0a2ae1200d3744")
+        self.assertIn("technocore_vs_settled_compute", result["known_draft_conflicts"])
+
+    def test_pins_new_testnet_and_airdrop_rules(self):
+        data = self.manifest()
+        by_id = {source["id"]: source for source in data["sources"]}
+        self.assertEqual(set(by_id), {
+            "teaser", "yellowpaper", "agent", "miner", "protocol_parameters",
+            "testnet", "airdrop",
+        })
+        testnet = " | ".join(by_id["testnet"]["required_markers"])
+        airdrop = " | ".join(by_id["airdrop"]["required_markers"])
+        for marker in (
+            "compute purchased in settled sessions",
+            "One participant, one score",
+            "Independent demand only",
+            "published, finalized block height",
+            "lodge a dispute within the stated window",
+        ):
+            self.assertIn(marker, testnet)
+        for marker in (
+            "4,400,000,000 (24.3%)",
+            "There is no claim window and no deadline",
+            "Every 3 $FLOP of the locked balance spent in settled sessions unlocks 1 $FLOP",
+            "Nothing liquid",
+        ):
+            self.assertIn(marker, airdrop)
+
+    def test_rejects_yellowpaper_pin_tampering(self):
+        mutations = []
+        for field, value in (
+            ("commit", "0" * 40),
+            ("tree", "0" * 40),
+            ("version", "0.5.0"),
+            ("status", "FINAL"),
+        ):
+            data = self.manifest()
+            data["yellowpaper_pin"][field] = value
+            mutations.append(data)
+        for mutation in mutations:
+            with self.subTest(mutation=mutation["yellowpaper_pin"]):
+                with self.assertRaises(criteria_monitor.ValidationError):
+                    criteria_monitor.validate_manifest(mutation)
 
     def test_marker_removal_is_material_change(self):
         data = self.manifest()
@@ -71,6 +115,42 @@ class CriteriaMonitorTests(unittest.TestCase):
             with self.subTest(mutation=mutation):
                 with self.assertRaises(criteria_monitor.ValidationError):
                     criteria_monitor.evaluate(mutation, lambda _url: "")
+
+    def test_rejects_missing_or_replaced_required_source_and_conflict(self):
+        mutations = []
+        data = self.manifest()
+        data["sources"][5]["id"] = "replacement"
+        data["sources"][5]["url"] = "https://flop.finance/replacement/"
+        mutations.append(data)
+        data = self.manifest()
+        data["sources"][6]["url"] = "https://flop.finance/not-airdrop/"
+        mutations.append(data)
+        data = self.manifest()
+        data["known_conflicts"] = []
+        mutations.append(data)
+        data = self.manifest()
+        data["known_conflicts"] = [data["known_conflicts"][0]]
+        mutations.append(data)
+        for mutation in mutations:
+            with self.subTest(mutation=mutation):
+                with self.assertRaises(criteria_monitor.ValidationError):
+                    criteria_monitor.validate_manifest(mutation)
+
+    def test_cli_rejects_duplicate_json_keys_normal_and_optimized(self):
+        raw = MANIFEST.read_text(encoding="utf-8")
+        duplicate = raw.replace(
+            '"schema": "nanaz.flop-official-criteria.v2",',
+            '"schema": "wrong", "schema": "nanaz.flop-official-criteria.v2",',
+            1,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "duplicate.json"
+            path.write_text(duplicate, encoding="utf-8")
+            for flags in ([], ["-O"]):
+                command = [sys.executable, *flags, str(MODULE), "--manifest", str(path), "--manifest-only"]
+                result = subprocess.run(command, text=True, capture_output=True, check=False)
+                self.assertEqual(result.returncode, 1)
+                self.assertIn("duplicate JSON key", result.stderr)
 
     def test_claims_never_upgrade_allocation(self):
         data = self.manifest()

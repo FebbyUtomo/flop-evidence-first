@@ -49,7 +49,28 @@
       "title": "Fail-closed roadmap and score integrity validator",
       "category": "tooling",
       "result": {"path": "scripts/verify_roadmap.py", "sha256": "cdebd6b6f0c6bea9f7ac41d0bff4a986319237fb2b5dcf853e21be3bf7e8bfcc", "commit": "a6011f4619e32c6201dbcf8d6e0f88e481011ff2", "url": "https://github.com/FebbyUtomo/flop-evidence-first/blob/a6011f4619e32c6201dbcf8d6e0f88e481011ff2/scripts/verify_roadmap.py"},
-      "attest": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null},
+      "attest": {
+        "status": "VERIFIED",
+        "actor_did": "did:key:z6MkuzkFDAwgSXgSVhxruVD4DGzuxCieeXonpsgCApd9o6Ms",
+        "evidence_url": "https://github.com/FebbyUtomo/flop-evidence-first/issues/1#issuecomment-6387074008",
+        "receipt": {
+          "snapshot_commit": "6d931570047ba065a83702083efd08d615da9686",
+          "snapshot_url": "https://github.com/putrikeme/flop-evidence-first/tree/6d931570047ba065a83702083efd08d615da9686/reviews/f471436",
+          "receipt_path": "evidence/fixtures/independent-review-f471436/receipt.json",
+          "receipt_sha256": "8fa16168c7efcd50454fac28be174adbc838d3315c3d4616199670b59edc3c00",
+          "signature_path": "evidence/fixtures/independent-review-f471436/receipt.sig",
+          "signature_sha256": "998ae7ea16af5a8bd334e29bafcf9b9e3f205a30f04acb9fa2dc55601d8d5c7b",
+          "public_key_path": "evidence/fixtures/independent-review-f471436/reviewer-ed25519-public.pem",
+          "public_key_sha256": "b2c846d303f908d32ea40d60dd520ef9ec26bbfb85c3f4d2fe9b94e43aacef0d",
+          "transcript_path": "evidence/fixtures/independent-review-f471436/transcript.txt",
+          "transcript_sha256": "4248e1f4439eef275e75e9bddc6253d2fbc234cd8f0738c92b66354572c2c636",
+          "artifact_sha256": "1f8628721dbafe4e8cc60817d5ceb8349c27cc83725b10bce4f071b0526e4c6b",
+          "source_commit": "f47143668521ede1aee7dc3c37746fb00d9eee24",
+          "contribution_id": "roadmap_integrity_validator",
+          "mapping_path": "evidence/fixtures/independent-review-f471436/mapping-comment.json",
+          "mapping_sha256": "751106a24ce9a8bdaf2a2ca339a6d8c61cb165c7cd4579525bfe5de51a67c6ac"
+        }
+      },
       "accept": {"status": "UNVERIFIED", "actor_did": null, "evidence_url": null}
     },
     {

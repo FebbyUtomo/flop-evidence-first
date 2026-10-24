@@ -1,0 +1,51 @@
+{
+  "acceptance_scope": "none",
+  "artifact": {
+    "format": "git-archive-tar",
+    "sha256": "1f8628721dbafe4e8cc60817d5ceb8349c27cc83725b10bce4f071b0526e4c6b"
+  },
+  "boundaries": {
+    "allocation": "UNVERIFIED",
+    "claim": "UNVERIFIED",
+    "eligibility": "UNVERIFIED",
+    "financial_advice": false,
+    "official_recognition": "UNVERIFIED",
+    "payment": "UNVERIFIED"
+  },
+  "environment": {
+    "cryptography_constraint": ">=46,<47",
+    "git": "git version 2.47.3",
+    "os": "Linux (none) 6.12.110+ #2 SMP Thu Sep 17 16:53:02 UTC 2026 aarch64 GNU/Linux",
+    "python": "Python 3.12.15",
+    "python_runtime": "3.14",
+    "uv": "uv 0.13.1 (aarch64-unknown-linux-gnu)"
+  },
+  "notes": "Independent reproduction completed; see transcript.",
+  "public_receipt_url": "https://github.com/putrikeme/flop-evidence-first/tree/main/reviews/f471436/",
+  "result": {
+    "core_exit_code": 0,
+    "core_verdict": "PASS",
+    "transcript_file": "transcript.txt",
+    "transcript_sha256": "4248e1f4439eef275e75e9bddc6253d2fbc234cd8f0738c92b66354572c2c636"
+  },
+  "reviewer": {
+    "actor_did": "did:key:z6MkuzkFDAwgSXgSVhxruVD4DGzuxCieeXonpsgCApd9o6Ms",
+    "independence_statement": "I am not controlled by the repository owner and did not use an owner-controlled alternate account, wallet, bot, or signing key.",
+    "name": "putrikeme"
+  },
+  "schema": "nanaz.flop-independent-review.v1",
+  "signature": {
+    "mode": "detached-ed25519",
+    "public_key_file": "reviewer-ed25519-public.pem",
+    "signature_file": "receipt.sig",
+    "signed_file": "receipt.json"
+  },
+  "source": {
+    "baseline_commit": "cccbf9bfc6fa526007f8da512dbfd47b46e3f3ce",
+    "commit": "f47143668521ede1aee7dc3c37746fb00d9eee24",
+    "commit_url": "https://github.com/FebbyUtomo/flop-evidence-first/commit/f47143668521ede1aee7dc3c37746fb00d9eee24",
+    "compare_url": "https://github.com/FebbyUtomo/flop-evidence-first/compare/cccbf9bfc6fa526007f8da512dbfd47b46e3f3ce...f47143668521ede1aee7dc3c37746fb00d9eee24",
+    "repository": "https://github.com/FebbyUtomo/flop-evidence-first"
+  },
+  "verdict": "ATTEST"
+}

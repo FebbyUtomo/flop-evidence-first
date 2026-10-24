@@ -1,0 +1,59 @@
+review_schema=nanaz.flop-independent-review.v1
+target_commit=f47143668521ede1aee7dc3c37746fb00d9eee24
+baseline_commit=cccbf9bfc6fa526007f8da512dbfd47b46e3f3ce
+head=f47143668521ede1aee7dc3c37746fb00d9eee24
+tree=9115a10609393fd438d31e8fd267aa5a557ed545
+worktree_status_begin
+worktree_status_end
+environment_begin
+Linux (none) 6.12.110+ #2 SMP Thu Sep 17 16:53:02 UTC 2026 aarch64 GNU/Linux
+git version 2.47.3
+Python 3.12.15
+uv 0.13.1 (aarch64-unknown-linux-gnu)
+environment_end
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python -m unittest discover -s tests -p test_\*.py
+Downloading cpython-3.14.8-linux-aarch64-gnu (download) (29.0MiB)
+ Downloaded cpython-3.14.8-linux-aarch64-gnu (download)
+Downloading cryptography (4.1MiB)
+ Downloaded cryptography
+Installed 3 packages in 3ms
+...................................................................................................
+----------------------------------------------------------------------
+Ran 99 tests in 1.935s
+
+OK
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python -O -m unittest discover -s tests -p test_\*.py
+...................................................................................................
+----------------------------------------------------------------------
+Ran 99 tests in 1.569s
+
+OK
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python contribution_registry.py
+{"accept":{"UNVERIFIED":10,"VERIFIED":0},"allocation_status":"UNVERIFIED","attest":{"UNVERIFIED":10,"VERIFIED":0},"contributions":10,"result_hashes_verified":10,"schema":"nanaz.flop-contributions.v1","unique_commits":8}
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python -O contribution_registry.py
+{"accept":{"UNVERIFIED":10,"VERIFIED":0},"allocation_status":"UNVERIFIED","attest":{"UNVERIFIED":10,"VERIFIED":0},"contributions":10,"result_hashes_verified":10,"schema":"nanaz.flop-contributions.v1","unique_commits":8}
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python scripts/verify_roadmap.py
+{"allocation_status": "UNVERIFIED", "artifacts": 38, "completed_tranches": 9, "pending_tranches": 2, "schema": "nanaz.flop-roadmap.v1", "score": 45, "target": 100, "workstreams": 6}
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python -O scripts/verify_roadmap.py
+{"allocation_status": "UNVERIFIED", "artifacts": 38, "completed_tranches": 9, "pending_tranches": 2, "schema": "nanaz.flop-roadmap.v1", "score": 45, "target": 100, "workstreams": 6}
+EXIT_CODE:0
+
+COMMAND: uv run --isolated --no-project --python 3.14 --with cryptography\>=46\,\<47 python -m compileall -q .
+EXIT_CODE:0
+
+COMMAND: git diff --check
+EXIT_CODE:0
+
+CORE_VERDICT:PASS
+CORE_EXIT_CODE:0

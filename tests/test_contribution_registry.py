@@ -25,9 +25,57 @@ class ContributionRegistryTests(unittest.TestCase):
         result = registry.validate(self.data(), ROOT)
         self.assertEqual(result["contributions"], 10)
         self.assertEqual(result["result_hashes_verified"], 10)
-        self.assertEqual(result["attest"], {"UNVERIFIED": 10, "VERIFIED": 0})
+        self.assertEqual(result["attest"], {"UNVERIFIED": 9, "VERIFIED": 1})
         self.assertEqual(result["accept"], {"UNVERIFIED": 10, "VERIFIED": 0})
         self.assertEqual(result["allocation_status"], "UNVERIFIED")
+
+    def test_roadmap_validator_attest_is_bound_to_public_independent_receipt(self):
+        item = next(
+            entry for entry in self.data()["contributions"]
+            if entry["id"] == "roadmap_integrity_validator"
+        )
+        attest = item["attest"]
+        self.assertEqual(attest["status"], "VERIFIED")
+        self.assertEqual(
+            attest["actor_did"],
+            "did:key:z6MkuzkFDAwgSXgSVhxruVD4DGzuxCieeXonpsgCApd9o6Ms",
+        )
+        self.assertEqual(
+            attest["evidence_url"],
+            "https://github.com/FebbyUtomo/flop-evidence-first/issues/1"
+            "#issuecomment-6387074008",
+        )
+        self.assertEqual(attest["receipt"]["snapshot_commit"],
+                         "6d931570047ba065a83702083efd08d615da9686")
+        self.assertEqual(attest["receipt"]["source_commit"],
+                         "f47143668521ede1aee7dc3c37746fb00d9eee24")
+        self.assertEqual(attest["receipt"]["contribution_id"],
+                         "roadmap_integrity_validator")
+
+    def test_verified_receipt_tampering_is_rejected(self):
+        def mutate_receipt(data, mutation):
+            item = next(entry for entry in data["contributions"]
+                        if entry["id"] == "roadmap_integrity_validator")
+            mutation(item["attest"])
+
+        mutations = (
+            lambda a: a.update(actor_did="did:key:not-a-valid-multibase-key"),
+            lambda a: a.update(evidence_url="https://example.invalid/unrelated"),
+            lambda a: a["receipt"].update(receipt_sha256="0" * 64),
+            lambda a: a["receipt"].update(transcript_sha256="0" * 64),
+            lambda a: a["receipt"].update(mapping_sha256="0" * 64),
+            lambda a: a["receipt"].update(contribution_id="offline_quality_gate"),
+            lambda a: a["receipt"].update(source_commit="0" * 40),
+            lambda a: a["receipt"].update(snapshot_commit="0" * 40),
+            lambda a: a["receipt"].update(snapshot_url="https://example.invalid/snapshot"),
+            lambda a: a["receipt"].update(
+                signature_path=a["receipt"]["receipt_path"],
+                signature_sha256=a["receipt"]["receipt_sha256"],
+            ),
+        )
+        for mutation in mutations:
+            with self.subTest(mutation=mutation):
+                self.assert_invalid(lambda data, m=mutation: mutate_receipt(data, m))
 
     def assert_invalid(self, mutate):
         data = self.data()

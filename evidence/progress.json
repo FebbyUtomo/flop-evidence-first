@@ -1,14 +1,14 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
-  "updated_at": "2026-10-04",
-  "score": 45,
+  "updated_at": "2026-10-24",
+  "score": 50,
   "target": 100,
   "daily_target_points": 5,
   "allocation_status": "UNVERIFIED",
   "workstreams": [
     {"id": "evidence", "weight": 20, "score": 10},
     {"id": "flagship_tooling", "weight": 20, "score": 10},
-    {"id": "independent_validation", "weight": 20, "score": 5},
+    {"id": "independent_validation", "weight": 20, "score": 10},
     {"id": "community", "weight": 15, "score": 5},
     {"id": "flipt_case_study", "weight": 15, "score": 5},
     {"id": "official_readiness", "weight": 10, "score": 10}
@@ -151,19 +151,21 @@
       ],
       "status": "verified",
       "evidence": "AgentAtlas, a publicly distinct pseudonymous reviewer with its own GitHub history and public DID, independently cataloged and issued caution feedback on exact source commit 7454a83d3e807e6fc3a497b6c31f23cfdc70138a in external commit 6cecbe33adc4f25f6374c30c7196e435fa3bf9ab. The review is attributable external feedback, not execution, acceptance, official recognition, eligibility, allocation, or payment."
-    }
-  ],
-  "pending_tranches": [
+    },
     {
       "id": "contribution_registry_v1",
       "title": "Curated contribution evidence registry",
       "workstream": "independent_validation",
-      "date": "2026-09-23",
+      "date": "2026-10-24",
       "points": 5,
-      "artifact": "docs/contribution-registry.md",
-      "status": "pending",
-      "blocker": "Frozen under the external-demand gate: a self-curated registry with all ATTEST and ACCEPT states UNVERIFIED cannot score without an independent exact-result receipt."
-    },
+      "artifacts": [
+        {"path": "docs/contribution-registry.md", "sha256": "0369674aa8a5916b6ad4ec6dadb14989489638e6fc5454947424cabddcf753c8"}
+      ],
+      "status": "verified",
+      "evidence": "Independent reviewer putrikeme reproduced commit f47143668521ede1aee7dc3c37746fb00d9eee24, published an Ed25519-signed receipt whose artifact and transcript hashes independently verify, mapped the receipt to roadmap_integrity_validator, and declared independent control of the reviewer account and DID key in public issue comment 6387074008. This verifies one ATTEST only; ACCEPT, official recognition, eligibility, allocation, claim, and payment remain UNVERIFIED."
+    }
+  ],
+  "pending_tranches": [
     {
       "id": "close_call_package_verifier_v1",
       "title": "Official Close Call package verifier",

@@ -18,13 +18,13 @@ This roadmap measures completed, checkable work. It does **not** estimate or gua
 |---|---|---:|---:|---|
 | evidence | Evidence foundation and claim boundaries | 20 | 10 | Published report/metrics and deterministic analyzer/tests are ledgered below. Next: independently verifiable receipt fixtures. |
 | flagship_tooling | Quality-gated flagship tooling | 20 | 10 | Offline quality gate and pinned-DID receipt verifier are ledgered below. Close Call sample replay is frozen as unscored readiness. |
-| independent_validation | Independent validation and adoption | 20 | 5 | AgentAtlas independently reviewed an exact repository revision with a caution outcome. Execution and ATTEST/ACCEPT remain UNVERIFIED. |
+| independent_validation | Independent validation and adoption | 20 | 10 | AgentAtlas published exact-revision caution feedback; putrikeme independently reproduced the pinned artifact and published one signed `ATTEST`. `ACCEPT` remains UNVERIFIED. |
 | community | Public education and community activity | 15 | 5 | Bilingual tutorial, pinned-DID announcement, and an attributable independent public fork are ledgered below. |
 | flipt_case_study | Flipt lifecycle engineering case study | 15 | 5 | Public-safe Arc Testnet references, state-machine validator, docs, and adversarial tests are ledgered below. |
 | official_readiness | Official-program and testnet readiness | 10 | 10 | Draft criteria monitoring plus the commit-pinned Sonnet-2 result verifier are ledgered below. |
-| **Total** |  | **100** | **45** | Externally controlled score backed by the completed-tranche ledger. |
+| **Total** |  | **100** | **50** | Externally controlled score backed by the completed-tranche ledger. |
 
-## Completed evidence ledger — 45 points
+## Completed evidence ledger — 50 points
 
 ### evidence_report_v1 — Claim-boundary report and metrics (5 points)
 
@@ -128,15 +128,15 @@ Evidence boundary: GitHub records an attributable public fork by `putrikeme`, a 
 
 Evidence boundary: AgentAtlas, a publicly distinct pseudonymous reviewer with its own GitHub repository and public Ed25519 DID, added a `caution` review in external commit [`6cecbe33adc4f25f6374c30c7196e435fa3bf9ab`](https://github.com/aiAgentAtlas/flop-atlas/commit/6cecbe33adc4f25f6374c30c7196e435fa3bf9ab) at `2026-09-14T04:15:49Z`. The record binds its feedback to our exact commit [`7454a83d3e807e6fc3a497b6c31f23cfdc70138a`](https://github.com/FebbyUtomo/flop-evidence-first/commit/7454a83d3e807e6fc3a497b6c31f23cfdc70138a). This is attributable external feedback, including criticism of the Sybil/spam footprint and private-evidence limits—not installation, execution, endorsement, `ATTEST`/`ACCEPT`, official recognition, eligibility, allocation, claimability, claim, or payment.
 
-## Pending evidence ledger — 10 unscored points
-
 ### contribution_registry_v1 — Curated contribution evidence registry (5 points)
 
 - Workstream: `independent_validation`
-- Status: `pending`
-- Artifact: `docs/contribution-registry.md`
+- Status: `verified`
+- Artifact: `docs/contribution-registry.md` — sha256 `0369674aa8a5916b6ad4ec6dadb14989489638e6fc5454947424cabddcf753c8`
 
-Blocker: frozen under the external-demand gate. A self-curated registry whose exact-result `ATTEST` and `ACCEPT` states are all `UNVERIFIED` cannot score itself. Cute trick, still circular.
+Evidence boundary: independent reviewer [`putrikeme`](https://github.com/putrikeme) reproduced exact source commit [`f47143668521ede1aee7dc3c37746fb00d9eee24`](https://github.com/FebbyUtomo/flop-evidence-first/commit/f47143668521ede1aee7dc3c37746fb00d9eee24) and published an Ed25519-signed [`ATTEST`](https://github.com/putrikeme/flop-evidence-first/tree/6d931570047ba065a83702083efd08d615da9686/reviews/f471436). The artifact hash using the receipt's exact prefixed `git archive` recipe, transcript hash, signature, DID derivation, and normal/optimized execution were independently reverified. Public [comment `6387074008`](https://github.com/FebbyUtomo/flop-evidence-first/issues/1#issuecomment-6387074008) maps the receipt to `roadmap_integrity_validator` and states independent account/key control. This proves one exact-result `ATTEST`; it is not `ACCEPT`, official FLOP Labs recognition, eligibility, allocation, claimability, claim, or payment.
+
+## Pending evidence ledger — 5 unscored points
 
 ### close_call_package_verifier_v1 — Official Close Call package verifier (5 points)
 
@@ -149,7 +149,7 @@ Blocker: frozen under the external-demand gate. Replaying an official sample wit
 ## Next 5-point tranches
 
 1. **Independent acceptance upgrade (5 points)**
-   - Obtain exact-result ATTEST or ACCEPT receipts from an attributable independent actor.
+   - Obtain an exact-result `ACCEPT` receipt from an attributable independent adopter or maintainer with a concrete use scope.
    - Verify the actor, receipt URL, and result hash before changing any registry status.
 
 2. **Official contribution route (5 points)**

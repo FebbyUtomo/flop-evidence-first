@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / "criteria_monitor.py"
 MANIFEST = ROOT / "evidence" / "official-criteria.json"
+CAPTURE_FIXTURE = ROOT / "evidence" / "fixtures" / "official-criteria-2026-10-26.json"
 SPEC = importlib.util.spec_from_file_location("criteria_monitor", MODULE)
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError("cannot load criteria_monitor module")
@@ -36,10 +37,10 @@ class CriteriaMonitorTests(unittest.TestCase):
         data = self.manifest()
         result = criteria_monitor.evaluate(data, self.fetched(data).__getitem__)
         self.assertEqual(result["status"], "unchanged")
-        self.assertEqual(result["sources_checked"], 7)
+        self.assertEqual(result["sources_checked"], 8)
         self.assertEqual(result["material_changes"], [])
         self.assertEqual(result["allocation_status"], "UNVERIFIED")
-        self.assertEqual(result["yellowpaper_commit"], "70e691c758e53eed17a016a02b0a2ae1200d3744")
+        self.assertEqual(result["yellowpaper_commit"], "56410c67b11292e707d32ef32e9c4ff9c02e28c7")
         self.assertIn("technocore_vs_settled_compute", result["known_draft_conflicts"])
 
     def test_pins_new_testnet_and_airdrop_rules(self):
@@ -47,7 +48,7 @@ class CriteriaMonitorTests(unittest.TestCase):
         by_id = {source["id"]: source for source in data["sources"]}
         self.assertEqual(set(by_id), {
             "teaser", "yellowpaper", "agent", "miner", "protocol_parameters",
-            "testnet", "airdrop",
+            "testnet", "airdrop", "yellowpaper_changelog",
         })
         testnet = " | ".join(by_id["testnet"]["required_markers"])
         airdrop = " | ".join(by_id["airdrop"]["required_markers"])
@@ -66,6 +67,74 @@ class CriteriaMonitorTests(unittest.TestCase):
             "Nothing liquid",
         ):
             self.assertIn(marker, airdrop)
+
+    def test_pins_new_protocol_rulings_and_runtime_mismatch(self):
+        data = self.manifest()
+        by_id = {source["id"]: source for source in data["sources"]}
+        changelog = " | ".join(by_id["yellowpaper_changelog"]["required_markers"])
+        for marker in (
+            "D-0527",
+            "D-0528",
+            "D-0529",
+            "D-0530",
+            "D-0531",
+            "sponsored_self_stake_enabled",
+            "off-chain explorer referral leaderboard",
+            "runtime still burns that leg",
+        ):
+            self.assertIn(marker, changelog)
+
+        guards = data["interpretation_guards"]
+        self.assertEqual(guards["miner_airdrop_unlock"]["testnet_scoring"], "DISTINCT")
+        self.assertEqual(guards["miner_airdrop_unlock"]["post_genesis_unlock"],
+                         "FINALIZED_MINER_BLOCK_REWARDS_OR_SETTLED_CHANNEL_PAYOUTS")
+        self.assertFalse(guards["sponsored_operator_bond"]["enrollment_evidence"])
+        self.assertEqual(guards["sponsored_operator_bond"]["self_stake_runtime_flag"],
+                         "sponsored_self_stake_enabled")
+        self.assertEqual(guards["referral_lottery"]["mode"], "DRAFT_OFF_CHAIN")
+        self.assertFalse(guards["referral_lottery"]["eligibility_evidence"])
+        self.assertFalse(guards["referral_lottery"]["allocation_evidence"])
+        self.assertEqual(guards["failed_early_close_penalty"]["normative_sink"],
+                         "FLOPFoundationAccount")
+        self.assertEqual(guards["failed_early_close_penalty"]["normative_burn"], "ZERO")
+        self.assertEqual(guards["failed_early_close_penalty"]["runtime_status"],
+                         "PARTIAL_RUNTIME_STILL_BURNS")
+
+    def test_captured_fixture_matches_committed_baselines_and_markers(self):
+        data = self.manifest()
+        fixture = json.loads(CAPTURE_FIXTURE.read_text(encoding="utf-8"))
+        self.assertEqual(fixture["schema"], "nanaz.flop-official-criteria-fixture.v1")
+        self.assertEqual(fixture["captured_at"], data["captured_at"])
+        sources = {source["id"]: source for source in data["sources"]}
+        entries = {entry["id"]: entry for entry in fixture["entries"]}
+        self.assertEqual(set(entries), set(sources))
+        for ident, source in sources.items():
+            entry = entries[ident]
+            self.assertEqual(entry["url"], source["url"])
+            self.assertEqual(criteria_monitor.text_digest(entry["normalized_text"]),
+                             entry["normalized_text_sha256"])
+            self.assertEqual(entry["normalized_text_sha256"], source["baseline_sha256"])
+            for marker in source["required_markers"]:
+                self.assertIn(marker, entry["normalized_text"])
+
+    def test_rejects_guard_promotion_or_runtime_mismatch_erasure(self):
+        mutations = []
+        data = self.manifest()
+        data["interpretation_guards"]["sponsored_operator_bond"]["enrollment_evidence"] = True
+        mutations.append(data)
+        data = self.manifest()
+        data["interpretation_guards"]["referral_lottery"]["allocation_evidence"] = True
+        mutations.append(data)
+        data = self.manifest()
+        data["interpretation_guards"]["failed_early_close_penalty"]["runtime_status"] = "COMPLIANT"
+        mutations.append(data)
+        data = self.manifest()
+        data["interpretation_guards"]["miner_airdrop_unlock"]["testnet_scoring"] = "SAME"
+        mutations.append(data)
+        for mutation in mutations:
+            with self.subTest(mutation=mutation["interpretation_guards"]):
+                with self.assertRaises(criteria_monitor.ValidationError):
+                    criteria_monitor.validate_manifest(mutation)
 
     def test_rejects_yellowpaper_pin_tampering(self):
         mutations = []
@@ -129,7 +198,7 @@ class CriteriaMonitorTests(unittest.TestCase):
         data["known_conflicts"] = []
         mutations.append(data)
         data = self.manifest()
-        data["known_conflicts"] = [data["known_conflicts"][0]]
+        data["known_conflicts"][0]["id"] = "replacement_conflict"
         mutations.append(data)
         for mutation in mutations:
             with self.subTest(mutation=mutation):
@@ -139,8 +208,8 @@ class CriteriaMonitorTests(unittest.TestCase):
     def test_cli_rejects_duplicate_json_keys_normal_and_optimized(self):
         raw = MANIFEST.read_text(encoding="utf-8")
         duplicate = raw.replace(
-            '"schema": "nanaz.flop-official-criteria.v2",',
-            '"schema": "wrong", "schema": "nanaz.flop-official-criteria.v2",',
+            '"schema": "nanaz.flop-official-criteria.v3",',
+            '"schema": "wrong", "schema": "nanaz.flop-official-criteria.v3",',
             1,
         )
         with tempfile.TemporaryDirectory() as tmp:

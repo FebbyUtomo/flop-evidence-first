@@ -16,11 +16,11 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 
-SCHEMA = "nanaz.flop-official-criteria.v2"
+SCHEMA = "nanaz.flop-official-criteria.v3"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ID_RE = re.compile(r"^[a-z][a-z0-9_]{1,63}$")
 SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
-ALLOWED_HOSTS = {"flop.finance", "ask.flop.finance"}
+ALLOWED_HOSTS = {"flop.finance", "ask.flop.finance", "raw.githubusercontent.com"}
 USER_AGENT = "flop-criteria-monitor/1.0"
 EXPECTED_SOURCE_URLS = {
     "teaser": "https://flop.finance/teaser/",
@@ -30,16 +30,44 @@ EXPECTED_SOURCE_URLS = {
     "protocol_parameters": "https://ask.flop.finance/docs/protocol-parameters",
     "testnet": "https://flop.finance/testnet/",
     "airdrop": "https://flop.finance/airdrop/",
+    "yellowpaper_changelog": (
+        "https://raw.githubusercontent.com/flop-labs/yellowpaper/"
+        "56410c67b11292e707d32ef32e9c4ff9c02e28c7/CHANGELOG.md"
+    ),
 }
-EXPECTED_CONFLICT_IDS = {"agent_unlock_surface_drift", "technocore_vs_settled_compute"}
+EXPECTED_CONFLICT_IDS = {"technocore_vs_settled_compute"}
 PINNED_YELLOWPAPER = {
     "version": "0.5.0-draft",
     "status": "DRAFT",
-    "commit": "70e691c758e53eed17a016a02b0a2ae1200d3744",
-    "tree": "59657ba8775ad27ff1a4e2245a18d6ebcccb8559",
-    "source_commit": "5e6e24279",
-    "published_at": "2026-10-13T06:38:47Z",
-    "url": "https://github.com/flop-labs/yellowpaper/commit/70e691c758e53eed17a016a02b0a2ae1200d3744",
+    "commit": "56410c67b11292e707d32ef32e9c4ff9c02e28c7",
+    "tree": "32dc40388b74fea5ca274bba58ee5f4f9e2430f5",
+    "source_commit": "dfd98a59d",
+    "published_at": "2026-10-26T03:50:48Z",
+    "url": "https://github.com/flop-labs/yellowpaper/commit/56410c67b11292e707d32ef32e9c4ff9c02e28c7",
+}
+EXPECTED_INTERPRETATION_GUARDS = {
+    "miner_airdrop_unlock": {
+        "testnet_scoring": "DISTINCT",
+        "post_genesis_unlock": "FINALIZED_MINER_BLOCK_REWARDS_OR_SETTLED_CHANNEL_PAYOUTS",
+        "fees_refunds_penalties_bonds_count": False,
+    },
+    "sponsored_operator_bond": {
+        "enrollment_evidence": False,
+        "sponsor_refund_only": True,
+        "self_stake_runtime_flag": "sponsored_self_stake_enabled",
+    },
+    "referral_lottery": {
+        "mode": "DRAFT_OFF_CHAIN",
+        "eligibility_evidence": False,
+        "allocation_evidence": False,
+    },
+    "failed_early_close_penalty": {
+        "fraction_percent": 20,
+        "normative_sink": "FLOPFoundationAccount",
+        "normative_burn": "ZERO",
+        "miner_receives_penalty": False,
+        "runtime_status": "PARTIAL_RUNTIME_STILL_BURNS",
+    },
 }
 
 
@@ -111,7 +139,7 @@ def validate_manifest(data: Any) -> dict[str, Any]:
     require(type(data) is dict, "manifest must be an object")
     expected_top = {
         "schema", "captured_at", "allocation_status", "claim_boundary",
-        "yellowpaper_pin", "sources", "known_conflicts",
+        "yellowpaper_pin", "interpretation_guards", "sources", "known_conflicts",
     }
     require(set(data) == expected_top, "manifest keys mismatch")
     require(data["schema"] == SCHEMA, "unsupported schema")
@@ -127,8 +155,13 @@ def validate_manifest(data: Any) -> dict[str, Any]:
             "yellowpaper_pin keys mismatch")
     require(pin == PINNED_YELLOWPAPER, "yellowpaper_pin does not match the reviewed draft revision")
 
+    guards = data["interpretation_guards"]
+    require(type(guards) is dict and guards == EXPECTED_INTERPRETATION_GUARDS,
+            "interpretation_guards do not preserve the reviewed fail-closed boundaries")
+
     raw_sources = data["sources"]
-    require(type(raw_sources) is list and len(raw_sources) == 7, "exactly seven official sources required")
+    require(type(raw_sources) is list and len(raw_sources) == len(EXPECTED_SOURCE_URLS),
+            "exact official source set required")
     sources = cast(list[Any], raw_sources)
     source_ids: set[str] = set()
     urls: set[str] = set()

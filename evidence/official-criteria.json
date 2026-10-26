@@ -1,23 +1,47 @@
 {
-  "schema": "nanaz.flop-official-criteria.v2",
-  "captured_at": "2026-10-15",
+  "schema": "nanaz.flop-official-criteria.v3",
+  "captured_at": "2026-10-26",
   "allocation_status": "UNVERIFIED",
   "claim_boundary": "This snapshot monitors official draft sources and detects drift. It does not establish identity-specific eligibility, allocation, claimability, payment, or token ownership.",
   "yellowpaper_pin": {
     "version": "0.5.0-draft",
     "status": "DRAFT",
-    "commit": "70e691c758e53eed17a016a02b0a2ae1200d3744",
-    "tree": "59657ba8775ad27ff1a4e2245a18d6ebcccb8559",
-    "source_commit": "5e6e24279",
-    "published_at": "2026-10-13T06:38:47Z",
-    "url": "https://github.com/flop-labs/yellowpaper/commit/70e691c758e53eed17a016a02b0a2ae1200d3744"
+    "commit": "56410c67b11292e707d32ef32e9c4ff9c02e28c7",
+    "tree": "32dc40388b74fea5ca274bba58ee5f4f9e2430f5",
+    "source_commit": "dfd98a59d",
+    "published_at": "2026-10-26T03:50:48Z",
+    "url": "https://github.com/flop-labs/yellowpaper/commit/56410c67b11292e707d32ef32e9c4ff9c02e28c7"
+  },
+  "interpretation_guards": {
+    "miner_airdrop_unlock": {
+      "testnet_scoring": "DISTINCT",
+      "post_genesis_unlock": "FINALIZED_MINER_BLOCK_REWARDS_OR_SETTLED_CHANNEL_PAYOUTS",
+      "fees_refunds_penalties_bonds_count": false
+    },
+    "sponsored_operator_bond": {
+      "enrollment_evidence": false,
+      "sponsor_refund_only": true,
+      "self_stake_runtime_flag": "sponsored_self_stake_enabled"
+    },
+    "referral_lottery": {
+      "mode": "DRAFT_OFF_CHAIN",
+      "eligibility_evidence": false,
+      "allocation_evidence": false
+    },
+    "failed_early_close_penalty": {
+      "fraction_percent": 20,
+      "normative_sink": "FLOPFoundationAccount",
+      "normative_burn": "ZERO",
+      "miner_receives_penalty": false,
+      "runtime_status": "PARTIAL_RUNTIME_STILL_BURNS"
+    }
   },
   "sources": [
     {
       "id": "teaser",
       "url": "https://flop.finance/teaser/",
       "authority": "official_provisional_overview",
-      "baseline_sha256": "7bab263102a6c9501b037eb339f3005b51535a4e267c8eee9663eeaab539eaaa",
+      "baseline_sha256": "38c3d301b13cace714f41b0dfb297562e09b118fb1d86f4a319cb65dda7fcdf6",
       "required_markers": [
         "The figures in this document are provisional",
         "The Yellow Paper is the definitive specification, and it is not yet final",
@@ -30,7 +54,7 @@
       "id": "yellowpaper",
       "url": "https://flop.finance/intro/yellowpaper/",
       "authority": "official_draft_normative_specification",
-      "baseline_sha256": "1a9454f25932f82f19beb5e67fc0ba59bd0d75886bb6a75dd9c784de153f691a",
+      "baseline_sha256": "be543c54e69f6d4d97e410c8e233ecadbd99aed77c97773f18f3098bf2ccae9b",
       "required_markers": [
         "Normative specification of the FLOP protocol",
         "Version 0.5.0 (draft)",
@@ -39,21 +63,35 @@
       ]
     },
     {
+      "id": "yellowpaper_changelog",
+      "url": "https://raw.githubusercontent.com/flop-labs/yellowpaper/56410c67b11292e707d32ef32e9c4ff9c02e28c7/CHANGELOG.md",
+      "authority": "official_commit_pinned_draft_changelog",
+      "baseline_sha256": "7ef0aff769767f0b3144d0df3f6c7fec5c0b88e874984db51f7fad0ddd6235ef",
+      "required_markers": [
+        "Credit miner block rewards toward the Miner airdrop unlock (R8.7; D-0527",
+        "Let sponsors post an operator's whole registration bond on devnet and testnet (R6.1a; D-0528).",
+        "D-0529, D-0530, D-0531",
+        "sponsored_self_stake_enabled",
+        "off-chain explorer referral leaderboard and periodic lotteries",
+        "runtime still burns that leg"
+      ]
+    },
+    {
       "id": "agent",
       "url": "https://flop.finance/intro/agent",
       "authority": "official_draft_role_guide",
-      "baseline_sha256": "7478913da5c59c218fde74181611388d83f3c482f19ddc905ca872615753f658",
+      "baseline_sha256": "f5046e7e71a634af8439dbd4b35243d7f62d461272fd9de9cfa7dba10c4eb880",
       "required_markers": [
         "Compute buyer · Draft whitepaper",
         "spend limits enforced on-chain",
-        "When it becomes liquid is not yet set"
+        "Every 3 FLOP of locked airdrop spent on inference unlocks 1 FLOP."
       ]
     },
     {
       "id": "miner",
       "url": "https://flop.finance/intro/miner",
       "authority": "official_draft_role_guide",
-      "baseline_sha256": "c97e9bb8d93b57d5a284093b2c8686e9b1cef20fe9e621ff1c544fced75d4d96",
+      "baseline_sha256": "0e1d6128b5854867b8e93d8767fc6e9607ceeaa6117d9b0533c352250061350a",
       "required_markers": [
         "Compute provider · Draft whitepaper",
         "Miner reward pool 75%",
@@ -65,7 +103,7 @@
       "id": "protocol_parameters",
       "url": "https://ask.flop.finance/docs/protocol-parameters",
       "authority": "official_draft_parameter_reference",
-      "baseline_sha256": "09d17b36ee7039852f2f52da7d138a5cc69046fb28a790a1b6f83aba28709272",
+      "baseline_sha256": "f707b6f8a273db4006474995483246f4ac1d54abd33bd18b331085823c015248",
       "required_markers": [
         "Draft whitepaper and draft design",
         "Testnet miner pool 1,200,000,000 FLOP",
@@ -78,7 +116,7 @@
       "id": "testnet",
       "url": "https://flop.finance/testnet/",
       "authority": "official_provisional_testnet_rules",
-      "baseline_sha256": "4d5f0f3e99caff945934b71938e4c5fb8c25ab3cb253d866112517471b189e06",
+      "baseline_sha256": "77d4064e4a6f74af7e87f86ce6971c7e322c79137ffc8bc45141b509f92613f7",
       "required_markers": [
         "Dates and rules are provisional",
         "published, finalized block height",
@@ -94,7 +132,7 @@
       "id": "airdrop",
       "url": "https://flop.finance/airdrop/",
       "authority": "official_draft_airdrop_rules",
-      "baseline_sha256": "35d42f97ac51c696927819d45234a1749240961ab81d76c51b25a1b673eb52f1",
+      "baseline_sha256": "873f296f9ab672b0d5339700ac8fec86b36af8c0c0e626a0db51821c95dc254f",
       "required_markers": [
         "These terms are a draft",
         "4,400,000,000 (24.3%)",
@@ -107,13 +145,6 @@
     }
   ],
   "known_conflicts": [
-    {
-      "id": "agent_unlock_surface_drift",
-      "source_ids": ["protocol_parameters", "airdrop"],
-      "markers": ["Agent airdrop release Not yet set", "Every 3 $FLOP of the locked balance spent in settled sessions unlocks 1 $FLOP"],
-      "status": "UNRESOLVED_DRAFT_CONFLICT",
-      "explanation": "The protocol-parameter summary says the agent release is not yet set while the dedicated draft airdrop page specifies a 3:1 settled-session spend-to-unlock rule. Neither is promoted to a final eligibility or release guarantee."
-    },
     {
       "id": "technocore_vs_settled_compute",
       "source_ids": ["testnet"],

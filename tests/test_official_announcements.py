@@ -26,12 +26,17 @@ class OfficialAnnouncementsTests(unittest.TestCase):
 
     def test_valid_multi_announcement_manifest(self):
         result = official_announcements.validate(self.manifest())
-        self.assertEqual(result["announcements"], 5)
+        self.assertEqual(result["announcements"], 7)
         self.assertEqual(result["work_lanes"], ["AGENT_WORK", "GPU_WORK"])
         self.assertEqual(result["states"], {
             "DIRECTIONAL_NOT_ELIGIBILITY_CRITERION": 1,
+            "DEVNET_UPCOMING_NOT_LIVE": 2,
             "PREVIEW_PROVISIONAL_INACTIVE": 4,
         })
+        self.assertEqual(result["operational_markers"], [
+            "devnet_upcoming_not_live",
+            "devnet_zero_allocation",
+        ])
         self.assertEqual(result["eligibility_status"], "UNVERIFIED")
         self.assertEqual(result["allocation_status"], "UNVERIFIED")
 
@@ -44,6 +49,8 @@ class OfficialAnnouncementsTests(unittest.TestCase):
             "kol_join_preview",
             "kol_referral_preview",
             "kol_official_quote_preview",
+            "devnet_public_upcoming",
+            "devnet_official_quote",
         })
         expected_posts = {
             "kol_leaderboard_preview": "2110624608890282056",
@@ -69,6 +76,38 @@ class OfficialAnnouncementsTests(unittest.TestCase):
         )
         media = by_id["kol_leaderboard_preview"]["media"]
         self.assertEqual(media[0]["sha256"], "3f8c3276b76706e9ef09ae88bf05203fcbc1226e3098bef4b3e78e534560f987")
+
+    def test_devnet_posts_separate_authored_and_quoted_text_and_fail_closed(self):
+        data = self.manifest()
+        by_id = {item["id"]: item for item in data["announcements"]}
+        public = by_id["devnet_public_upcoming"]
+        official = by_id["devnet_official_quote"]
+        self.assertEqual(public["source"]["post_id"], "2114617436398100654")
+        self.assertEqual(public["source"]["published_at"], "2026-10-26T07:17:39Z")
+        self.assertIn("Participation does not count toward any token allocation.",
+                      public["source_snapshot"]["authored_text_raw"])
+        self.assertEqual(public["state"], "DEVNET_UPCOMING_NOT_LIVE")
+        self.assertEqual(official["source"]["post_id"], "2114628648615772410")
+        self.assertEqual(official["source"]["published_at"], "2026-10-26T08:02:12Z")
+        self.assertEqual(official["source_snapshot"]["authored_text_raw"],
+                         "Devnet coming very soon")
+        self.assertNotIn("Participation does not count", official["source_snapshot"]["authored_text_raw"])
+        self.assertEqual(official["quoted_post_ids"], ["2114617436398100654"])
+        self.assertEqual(official["state"], "DEVNET_UPCOMING_NOT_LIVE")
+        self.assertIsNone(official["linked_artifact"])
+        self.assertIsNone(official["deadline"])
+
+    def test_rejects_devnet_live_or_allocation_promotion(self):
+        data = self.manifest()
+        data["operational_markers"].remove("devnet_zero_allocation")
+        with self.assertRaises(official_announcements.ValidationError):
+            official_announcements.validate(data)
+
+        data = self.manifest()
+        item = next(item for item in data["announcements"] if item["id"] == "devnet_public_upcoming")
+        item["state"] = "DEVNET_LIVE"
+        with self.assertRaises(official_announcements.ValidationError):
+            official_announcements.validate(data)
 
     def test_rejects_eligibility_promotion_without_artifact_or_receipt(self):
         data = self.manifest()

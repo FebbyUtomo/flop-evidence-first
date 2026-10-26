@@ -1,9 +1,13 @@
 {
-  "schema": "nanaz.flop-official-announcements.v2",
-  "captured_at": "2026-10-15",
+  "schema": "nanaz.flop-official-announcements.v3",
+  "captured_at": "2026-10-26",
   "eligibility_status": "UNVERIFIED",
   "allocation_status": "UNVERIFIED",
   "claim_boundary": "This record preserves official directional and preview announcements. It does not establish identity-specific eligibility, accepted contribution, allocation, claimability, or payment.",
+  "operational_markers": [
+    "devnet_upcoming_not_live",
+    "devnet_zero_allocation"
+  ],
   "announcements": [
     {
       "id": "gpu_agent_work_direction",
@@ -175,6 +179,60 @@
       "linked_artifact": null,
       "exact_identity_receipt": null,
       "state": "PREVIEW_PROVISIONAL_INACTIVE"
+    },
+    {
+      "id": "devnet_public_upcoming",
+      "source": {
+        "platform": "x",
+        "account": "CryptoHayes",
+        "post_id": "2114617436398100654",
+        "published_at": "2026-10-26T07:17:39Z",
+        "url": "https://x.com/CryptoHayes/status/2114617436398100654"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "In the coming days @flop_labs will open up Devnet for anyone to join as a miner or validator and for agents to connect to the network. Participation does not count toward any token allocation. The point of Devnet is to do some public tests before we graduate to Testnet / airdrop",
+        "authored_text_expanded": "In the coming days @flop_labs will open up Devnet for anyone to join as a miner or validator and for agents to connect to the network. Participation does not count toward any token allocation. The point of Devnet is to do some public tests before we graduate to Testnet / airdrop",
+        "links": []
+      },
+      "source_snapshot_sha256": "7effba624e1ba8e429cba815b28dc8a5d3449bffaae85ee5c249b3ddafb07288",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "Participation does not count toward any token allocation."
+      ],
+      "quoted_post_ids": [],
+      "media": [],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "DEVNET_UPCOMING_NOT_LIVE"
+    },
+    {
+      "id": "devnet_official_quote",
+      "source": {
+        "platform": "x",
+        "account": "flop_labs",
+        "post_id": "2114628648615772410",
+        "published_at": "2026-10-26T08:02:12Z",
+        "url": "https://x.com/flop_labs/status/2114628648615772410"
+      },
+      "source_snapshot": {
+        "authored_text_raw": "Devnet coming very soon",
+        "authored_text_expanded": "Devnet coming very soon",
+        "links": []
+      },
+      "source_snapshot_sha256": "f3d71ac66c9024ca3fc7ee91208fc7d153b1b8f95f1f7a0f90c7c8b2317acd5f",
+      "exact_quote": null,
+      "work_lanes": [],
+      "required_markers": [
+        "Devnet coming very soon"
+      ],
+      "quoted_post_ids": ["2114617436398100654"],
+      "media": [],
+      "deadline": null,
+      "linked_artifact": null,
+      "exact_identity_receipt": null,
+      "state": "DEVNET_UPCOMING_NOT_LIVE"
     }
   ]
 }

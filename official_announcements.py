@@ -14,7 +14,7 @@ from typing import Any, cast
 from urllib.parse import urlparse
 
 
-SCHEMA = "nanaz.flop-official-announcements.v2"
+SCHEMA = "nanaz.flop-official-announcements.v3"
 POST_ID_RE = re.compile(r"^[0-9]{19}$")
 TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 SHA256_RE = re.compile(r"^[a-f0-9]{64}$")
@@ -22,6 +22,8 @@ ALLOWED_LANES = {"GPU_WORK", "AGENT_WORK"}
 MEDIA_DIR = Path(__file__).resolve().parent / "evidence" / "media"
 DIRECTIONAL_STATE = "DIRECTIONAL_NOT_ELIGIBILITY_CRITERION"
 PREVIEW_STATE = "PREVIEW_PROVISIONAL_INACTIVE"
+DEVNET_STATE = "DEVNET_UPCOMING_NOT_LIVE"
+OPERATIONAL_MARKERS = ["devnet_upcoming_not_live", "devnet_zero_allocation"]
 PINNED_CLAIM_BOUNDARY = (
     "This record preserves official directional and preview announcements. It does not establish "
     "identity-specific eligibility, accepted contribution, allocation, claimability, or payment."
@@ -115,6 +117,26 @@ PINNED = {
         "state": PREVIEW_STATE,
         "markers": ["Preview of the upcoming KOL leaderboard", "PROVISIONAL · SAMPLE DATA"],
         "quoted_post_ids": ["2110624608890282056"],
+        "media": [],
+    },
+    "devnet_public_upcoming": {
+        "account": "CryptoHayes",
+        "post_id": "2114617436398100654",
+        "published_at": "2026-10-26T07:17:39Z",
+        "snapshot_sha256": "7effba624e1ba8e429cba815b28dc8a5d3449bffaae85ee5c249b3ddafb07288",
+        "state": DEVNET_STATE,
+        "markers": ["Participation does not count toward any token allocation."],
+        "quoted_post_ids": [],
+        "media": [],
+    },
+    "devnet_official_quote": {
+        "account": "flop_labs",
+        "post_id": "2114628648615772410",
+        "published_at": "2026-10-26T08:02:12Z",
+        "snapshot_sha256": "f3d71ac66c9024ca3fc7ee91208fc7d153b1b8f95f1f7a0f90c7c8b2317acd5f",
+        "state": DEVNET_STATE,
+        "markers": ["Devnet coming very soon"],
+        "quoted_post_ids": ["2114617436398100654"],
         "media": [],
     },
 }
@@ -221,14 +243,17 @@ def validate_media(media: Any, expected: list[dict[str, Any]], field: str) -> No
 def validate(data: Any) -> dict[str, Any]:
     manifest = strict_object(
         data,
-        {"schema", "captured_at", "eligibility_status", "allocation_status", "claim_boundary", "announcements"},
+        {"schema", "captured_at", "eligibility_status", "allocation_status", "claim_boundary",
+         "operational_markers", "announcements"},
         "manifest",
     )
     require(manifest["schema"] == SCHEMA, "unsupported schema")
-    require(manifest["captured_at"] == "2026-10-15", "unexpected capture date")
+    require(manifest["captured_at"] == "2026-10-26", "unexpected capture date")
     require(manifest["eligibility_status"] == "UNVERIFIED", "eligibility must remain UNVERIFIED")
     require(manifest["allocation_status"] == "UNVERIFIED", "allocation must remain UNVERIFIED")
     require(manifest["claim_boundary"] == PINNED_CLAIM_BOUNDARY, "claim boundary mismatch")
+    require(manifest["operational_markers"] == OPERATIONAL_MARKERS,
+            "operational markers must keep devnet upcoming and zero-allocation")
 
     announcements = manifest["announcements"]
     require(type(announcements) is list and len(announcements) == len(PINNED),
@@ -267,8 +292,18 @@ def validate(data: Any) -> dict[str, Any]:
             require(quote in item["source_snapshot"]["authored_text_raw"],
                     "directional quote absent from source snapshot")
         else:
-            require(lanes == [], f"{field} preview must not invent work lanes")
-            require(item["exact_quote"] is None, f"{field} preview exact_quote must be null")
+            require(lanes == [], f"{field} must not invent work lanes")
+            require(item["exact_quote"] is None, f"{field} exact_quote must be null")
+
+        if ident == "devnet_public_upcoming":
+            zero_allocation = "Participation does not count toward any token allocation."
+            require(zero_allocation in item["source_snapshot"]["authored_text_raw"],
+                    "devnet zero-allocation boundary absent from authored source")
+        elif ident == "devnet_official_quote":
+            require(item["source_snapshot"]["authored_text_raw"] == "Devnet coming very soon",
+                    "official devnet authored text must remain separate from quoted text")
+            require(item["quoted_post_ids"] == [PINNED["devnet_public_upcoming"]["post_id"]],
+                    "official devnet quote relationship mismatch")
 
     require(observed_ids == set(PINNED), "announcement set mismatch")
     return {
@@ -276,6 +311,7 @@ def validate(data: Any) -> dict[str, Any]:
         "announcements": len(announcements),
         "work_lanes": sorted(ALLOWED_LANES),
         "states": dict(sorted(states.items())),
+        "operational_markers": OPERATIONAL_MARKERS,
         "eligibility_status": "UNVERIFIED",
         "allocation_status": "UNVERIFIED",
     }

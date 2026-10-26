@@ -83,12 +83,13 @@ Evidence boundary: six immutable Arc Testnet transaction references support grad
 
 - Workstream: `official_readiness`
 - Status: `verified`
-- Artifact: `criteria_monitor.py` — sha256 `4f8054cd88e6909080f9f925089ab14b38e7684cb42e5e92b35086ead87e6fdf`
-- Artifact: `tests/test_criteria_monitor.py` — sha256 `95a2f5d7fedc51bdcee19c2dcb65bf28c21efc37acbf7ce5b71cd9f3b4d5263b`
-- Artifact: `evidence/official-criteria.json` — sha256 `42cb1fe2cd3a82a2b05996e1f0203b2677c2a9ba9b433d65d6962fdf152fa00a`
-- Artifact: `docs/official-criteria-monitor.md` — sha256 `6d9c64d36e7510b05222faa976ab363ad3840b7b0d63306aba65acef63919517`
+- Artifact: `criteria_monitor.py` — sha256 `262ce4a9ea78e9e32aba664b4f0ea3ceab18c40956e21b3edfca06ea4cf497e7`
+- Artifact: `tests/test_criteria_monitor.py` — sha256 `154bd31e9a5e8a48c2ac335eaa05edd4832eeb2d8af5e7b7dc3899aad9cf81b5`
+- Artifact: `evidence/official-criteria.json` — sha256 `86698c427263084d64d1efea4b18d9da932c917859c87bcfb364081ea4d2ab67`
+- Artifact: `docs/official-criteria-monitor.md` — sha256 `9185f2a9bee14a8a68fbe8036970cdd936ca4fcdb53447a1c13821cf203bd4d7`
+- Artifact: `evidence/fixtures/official-criteria-2026-10-26.json` — sha256 `e8f7e9c82b0e5e8963728a9a309207664ae586a13005bd4157b8bf65ee3a649b`
 
-Evidence boundary: the read-only monitor pins seven official draft FLOP surfaces plus Yellow Paper commit `70e691c`, detects content and material-marker drift, preserves the unresolved Technocore-vs-settled-compute and agent-unlock conflicts, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
+Evidence boundary: the read-only monitor pins eight official draft FLOP surfaces plus Yellow Paper commit `56410c67`, preserves an immutable normalized-text fixture, detects content and material-marker drift, separates testnet scoring from post-genesis unlock, preserves the remaining Technocore-vs-settled-compute conflict and runtime penalty-sink mismatch, and keeps allocation `UNVERIFIED`. It has no wallet, signing, POST, transaction, publication, or file-write path.
 
 ### sonnet_results_verifier_v1 — Sonnet-2 result and allocation verifier (5 points)
 

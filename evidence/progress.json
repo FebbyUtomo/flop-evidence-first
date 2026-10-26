@@ -1,6 +1,6 @@
 {
   "schema": "nanaz.flop-roadmap.v1",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-26",
   "score": 50,
   "target": 100,
   "daily_target_points": 5,
@@ -94,13 +94,14 @@
       "date": "2026-09-22",
       "points": 5,
       "artifacts": [
-        {"path": "criteria_monitor.py", "sha256": "4f8054cd88e6909080f9f925089ab14b38e7684cb42e5e92b35086ead87e6fdf"},
-        {"path": "tests/test_criteria_monitor.py", "sha256": "95a2f5d7fedc51bdcee19c2dcb65bf28c21efc37acbf7ce5b71cd9f3b4d5263b"},
-        {"path": "evidence/official-criteria.json", "sha256": "42cb1fe2cd3a82a2b05996e1f0203b2677c2a9ba9b433d65d6962fdf152fa00a"},
-        {"path": "docs/official-criteria-monitor.md", "sha256": "6d9c64d36e7510b05222faa976ab363ad3840b7b0d63306aba65acef63919517"}
+        {"path": "criteria_monitor.py", "sha256": "262ce4a9ea78e9e32aba664b4f0ea3ceab18c40956e21b3edfca06ea4cf497e7"},
+        {"path": "tests/test_criteria_monitor.py", "sha256": "154bd31e9a5e8a48c2ac335eaa05edd4832eeb2d8af5e7b7dc3899aad9cf81b5"},
+        {"path": "evidence/official-criteria.json", "sha256": "86698c427263084d64d1efea4b18d9da932c917859c87bcfb364081ea4d2ab67"},
+        {"path": "docs/official-criteria-monitor.md", "sha256": "9185f2a9bee14a8a68fbe8036970cdd936ca4fcdb53447a1c13821cf203bd4d7"},
+        {"path": "evidence/fixtures/official-criteria-2026-10-26.json", "sha256": "e8f7e9c82b0e5e8963728a9a309207664ae586a13005bd4157b8bf65ee3a649b"}
       ],
       "status": "verified",
-      "evidence": "Read-only monitoring of seven official draft FLOP surfaces pins Yellow Paper 70e691c, detects baseline and material-marker drift, preserves settled-compute and unlock-rule conflicts, and cannot upgrade identity-specific allocation state."
+      "evidence": "Read-only monitoring of eight official draft FLOP surfaces pins Yellow Paper 56410c67 and an immutable normalized-text fixture, detects baseline and material-marker drift, separates testnet scoring from post-genesis unlock, preserves the remaining settled-compute and runtime penalty-sink conflicts, and cannot upgrade identity-specific allocation state."
     },
 
     {
